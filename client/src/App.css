@@ -1,0 +1,38 @@
+/* Style for the main container */
+div {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  /* Style for the section headers */
+  h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the lists */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Style for list items */
+  li {
+    margin-bottom: 5px;
+  }
+  
+  /* Example: Add specific styles for Authors and Works */
+  /* You can extend this for other sections as needed */
+  
+  /* Style for Authors section */
+  /* h2:nth-of-type(1) selects the first h2 element */
+  h2:nth-of-type(1) {
+    color: #333;
+  }
+  
+  /* Style for Works section */
+  /* h2:nth-of-type(2) selects the second h2 element */
+  h2:nth-of-type(2) {
+    color: #666;
+  }
+  
