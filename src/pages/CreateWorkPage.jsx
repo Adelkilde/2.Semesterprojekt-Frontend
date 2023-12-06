@@ -9,6 +9,9 @@ export default function CreateWork() {
       "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works";
     const response = await fetch(url, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(newWork),
     });
     console.log(newWork);

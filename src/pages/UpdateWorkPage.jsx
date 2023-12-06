@@ -41,6 +41,7 @@ export default function UpdateWork() {
       });
       if (response.ok) {
         console.log("Work deleted");
+        navigate("/works");
       } else {
         ("Error deleting work");
       }
