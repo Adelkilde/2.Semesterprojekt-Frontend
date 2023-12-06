@@ -1,14 +1,15 @@
 import { NavLink } from "react-router-dom";
+// import "./Navbar.css"; // Import the CSS file
 
 export default function Navbar() {
   return (
-    <nav>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/about-me">Om mig</NavLink>
-      <NavLink to="/works">Værker</NavLink>
-      <NavLink to="/reviews">Anmeldelser</NavLink>
-      <NavLink to="/news">Nyheder</NavLink>
-      <NavLink to="/contact-me">Kontakt mig</NavLink>
+    <nav className="navbar">
+      <NavLink className="nav-link" to="/">Home</NavLink>
+      <NavLink className="nav-link" to="/about-me">Om mig</NavLink>
+      <NavLink className="nav-link" to="/works">Værker</NavLink>
+      <NavLink className="nav-link" to="/reviews">Anmeldelser</NavLink>
+      <NavLink className="nav-link" to="/news">Nyheder</NavLink>
+      <NavLink className="nav-link" to="/contact-me">Kontakt mig</NavLink>
     </nav>
   );
 }
