@@ -53,10 +53,18 @@ export default function UpdateWork() {
   return (
     <section className="page">
       <h1>Opdater værk</h1>
-      <WorkForm work={work} saveWork={saveWork} />
-      <button className="btn-delete" onClick={deleteWork}>
-        Slet værk
-      </button>
+      {work && (
+        <>
+          <div>
+            <h2>{work.title}</h2>
+            <img src={work.image} alt={work.title} />
+          </div>
+          <WorkForm work={work} saveWork={saveWork} />
+          <button className="btn-delete" onClick={deleteWork}>
+            Slet værk
+          </button>
+        </>
+      )}
     </section>
   );
 }
