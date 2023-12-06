@@ -71,8 +71,6 @@ export default function ContactMePage() {
         {authors.map((author) => (
           <li key={author.id} className="list-group-item">
             {/* {author.image && <img src={author.image} alt="author Image" className="img-fluid" />} */}
-            <p className="mb-1">{author.name}</p>
-            <p className="mb-1">f. {author.birth_year}</p>
             {/* Kontaktinformation for hver forfatter */}
             <p className="mb-1">Email: Placeholder Email{author.email}</p>
             <div className="social-media-links">
