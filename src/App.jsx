@@ -6,6 +6,7 @@ import NewsPage from "./pages/NewsPage"; // Import your NewsPage component
 import CreateWorkPage from "./pages/CreateWorkPage";
 import UpdateWorkPage from "./pages/UpdateWorkPage";
 import CreateReviewPage from "./pages/CreateReviewPage";
+import UpdateReviewPage from "./pages/UpdateReviewPage";
 export default function App() {
   const publicRoutes = (
     <Routes>
@@ -16,6 +17,7 @@ export default function App() {
       <Route path="/create-work" element={<CreateWorkPage />} />
       <Route path="/works/:work_id" element={<UpdateWorkPage />} />
       <Route path="/create-review" element={<CreateReviewPage />} />
+      <Route path="/reviews/:review_id" element={<UpdateReviewPage />} />
     </Routes>
   );
 
