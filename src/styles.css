@@ -43,18 +43,23 @@
 
 
 .navbar {
-  background-color: #333;
+  background: linear-gradient(to right, #77c9d4, #57bc90, #57bc90, #77c9d4);
   padding: 15px;
   display: flex;
   justify-content: space-around;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .nav-link {
-  color: white;
+  color: #fff;
   text-decoration: none;
   padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .nav-link:hover {
-  background-color: #555;
+  background-color: rgba(255, 255, 255, 0.3);
 }
+
