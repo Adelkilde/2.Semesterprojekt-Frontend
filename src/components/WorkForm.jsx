@@ -8,11 +8,19 @@ export default function WorkForm({ saveWork, work }) {
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    setTitle(work.title);
-    setPublicationDate(work.publicationDate);
-    setPublisher(work.publisher);
-    setDescription(work.description);
-    setImage(work.image);
+    if (
+      work?.title &&
+      work?.publicationDate &&
+      work?.publisher &&
+      work?.description &&
+      work?.image
+    ) {
+      setTitle(work.title);
+      setPublicationDate(work.publicationDate);
+      setPublisher(work.publisher);
+      setDescription(work.description);
+      setImage(work.image);
+    }
   }, [work]);
 
   function handleSubmit(event) {
