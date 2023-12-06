@@ -5,7 +5,7 @@ import AboutMe from "./pages/AboutMePage.jsx";
 import Works from "./pages/WorksPage.jsx";
 import Reviews from "./pages/ReviewsPage.jsx";
 import News from "./pages/NewsPage.jsx";
-// import ContactMe from "./pages/ContactMePage.jsx";
+import ContactMe from "./pages/ContactPage.jsx";
 
 export default function App() {
   return (
@@ -18,7 +18,7 @@ export default function App() {
           <Route path="/works" element={<Works />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/news" element={<News />} />
-          {/* <Route path="/contact-me" element={<ContactMe />} /> */}
+          <Route path="/contact-me" element={<ContactMe />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
