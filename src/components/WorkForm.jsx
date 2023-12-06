@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function WorkForm({ saveWork, work }) {
+  const [authorId, setAuthorId] = useState("");
   const [title, setTitle] = useState("");
   const [publicationDate, setPublicationDate] = useState("");
   const [publisher, setPublisher] = useState("");
@@ -10,13 +11,15 @@ export default function WorkForm({ saveWork, work }) {
   useEffect(() => {
     if (
       work?.title &&
+      work?.authorId &&
       work?.publicationDate &&
       work?.publisher &&
       work?.description &&
       work?.image
     ) {
       setTitle(work.title);
-      setPublicationDate(work.publicationDate);
+      setAuthorId(work.author_id);
+      setPublicationDate(work.publication_date);
       setPublisher(work.publisher);
       setDescription(work.description);
       setImage(work.image);
@@ -27,7 +30,8 @@ export default function WorkForm({ saveWork, work }) {
     event.preventDefault();
     const formData = {
       title: title,
-      publicationDate: publicationDate,
+      author_id: authorId,
+      publication_date: publicationDate,
       publisher: publisher,
       description: description,
       image: image,
@@ -43,6 +47,15 @@ export default function WorkForm({ saveWork, work }) {
           value={title}
           placeholder="Titel"
           onChange={(e) => setTitle(e.target.value)}
+        />
+      </label>
+      <label>
+        Forfatter
+        <input
+          type="number"
+          value={authorId}
+          placeholder="Forfatter ID"
+          onChange={(e) => setAuthorId(e.target.value)}
         />
       </label>
       <label>

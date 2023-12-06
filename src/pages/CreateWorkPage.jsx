@@ -5,11 +5,13 @@ export default function CreateWork() {
   const navigate = useNavigate();
 
   async function createWork(newWork) {
-    const url = "localhost:3333/works";
+    const url =
+      "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works";
     const response = await fetch(url, {
       method: "POST",
       body: JSON.stringify(newWork),
     });
+    console.log(newWork);
     if (response.ok) {
       const data = await response.json();
       console.log("New work created: ", data);

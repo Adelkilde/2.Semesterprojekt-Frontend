@@ -6,7 +6,7 @@ export default function UpdateWork() {
   const [work, setWork] = useState();
   const params = useParams();
   const navigate = useNavigate();
-  const url = `localhost:3333/works/${params.work_id}`;
+  const url = `https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works/${params.work_id}`;
 
   useEffect(() => {
     async function getWork() {
