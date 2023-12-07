@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Nav.jsx";
+import Logo from "./components/Logo.jsx";
 import AboutMe from "./pages/AboutMePage.jsx";
 import Works from "./pages/WorksPage.jsx";
 import Reviews from "./pages/ReviewsPage.jsx";
@@ -23,6 +24,7 @@ export default function App() {
 
   return (
     <>
+      <Logo />
       <Navbar isAdmin={isAdmin} />
       <main>
         <Routes>

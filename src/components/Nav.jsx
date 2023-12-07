@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import LogoImage from "../assets/images/Logo4.cropped.png";
 
 export default function Navbar({ isAdmin }) {
   console.log("isAdmin (Navbar):", isAdmin);
@@ -7,9 +6,6 @@ export default function Navbar({ isAdmin }) {
   if (isAdmin) {
     return (
       <nav>
-        <NavLink to="/">
-          <img src={LogoImage} alt="Logo" />
-        </NavLink>
         <NavLink to="/admin/manage-about-me">Administrer Om Mig</NavLink>
         <NavLink to="/admin/manage-works">Administrer værker</NavLink>
         <NavLink to="/admin/manage-reviews">Administrer Anmeldelser</NavLink>
@@ -20,9 +16,6 @@ export default function Navbar({ isAdmin }) {
   } else {
     return (
       <nav>
-        <NavLink to="/">
-          <img src={LogoImage} alt="Logo" />
-        </NavLink>
         <NavLink to="/about-me">Om mig</NavLink>
         <NavLink to="/works">Værker</NavLink>
         <NavLink to="/reviews">Anmeldelser</NavLink>
