@@ -5,10 +5,14 @@ export default function AboutMePage() {
 
   useEffect(() => {
     async function getAuthor() {
-      const url = "http://localhost:3333/author";
+      const url =
+        "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/author";
       const response = await fetch(url);
       const data = await response.json();
-      const authorArray = Object.keys(data).map((key) => ({ id: key, ...data[key] }));
+      const authorArray = Object.keys(data).map((key) => ({
+        id: key,
+        ...data[key],
+      }));
       setWorks(authorArray);
     }
     getAuthor();

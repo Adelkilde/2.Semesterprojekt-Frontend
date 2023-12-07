@@ -5,10 +5,14 @@ export default function ReviewsPage() {
 
   useEffect(() => {
     async function getReviews() {
-      const url = "http://localhost:3333/reviews";
+      const url =
+        "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/reviews";
       const response = await fetch(url);
       const data = await response.json();
-      const reviewsArray = Object.keys(data).map((key) => ({ id: key, ...data[key] }));
+      const reviewsArray = Object.keys(data).map((key) => ({
+        id: key,
+        ...data[key],
+      }));
       setReviews(reviewsArray);
     }
     getReviews();

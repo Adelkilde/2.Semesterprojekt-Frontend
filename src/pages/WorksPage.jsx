@@ -6,7 +6,8 @@ export default function WorksPage() {
 
   useEffect(() => {
     async function getWorks() {
-      const url = "http://localhost:3333/works";
+      const url =
+        "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works";
       const response = await fetch(url);
       const data = await response.json();
       const worksArray = Object.keys(data).map((key) => ({
