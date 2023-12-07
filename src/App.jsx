@@ -1,27 +1,25 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar.jsx";
-// import Home from "./pages/HomePage.jsx";
-import AboutMe from "./pages/AboutMePage.jsx";
-import Works from "./pages/WorksPage.jsx";
-import Reviews from "./pages/ReviewsPage.jsx";
-import News from "./pages/NewsPage.jsx";
-import ContactMe from "./pages/ContactPage.jsx";
-
+import { Routes, Route } from "react-router-dom";
+import WorksPage from "./pages/WorksPage"; // Import your WorksPage component
+import AboutMePage from "./pages/AboutMePage"; // Import your AboutMePage component
+import ReviewsPage from "./pages/ReviewsPage"; // Import your ReviewsPage component
+import NewsPage from "./pages/NewsPage"; // Import your NewsPage component
+import CreateWorkPage from "./pages/CreateWorkPage";
+import UpdateWorkPage from "./pages/UpdateWorkPage";
+import CreateReviewPage from "./pages/CreateReviewPage";
+import UpdateReviewPage from "./pages/UpdateReviewPage";
 export default function App() {
-  return (
-    <>
-      <Navbar />
-      <main>
-        <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/about-me" element={<AboutMe />} />
-          <Route path="/works" element={<Works />} />
-          <Route path="/reviews" element={<Reviews />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/contact-me" element={<ContactMe />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </main>
-    </>
+  const publicRoutes = (
+    <Routes>
+      <Route path="/works" element={<WorksPage />} />
+      <Route path="/about-me" element={<AboutMePage />} />
+      <Route path="/reviews" element={<ReviewsPage />} />
+      <Route path="/news" element={<NewsPage />} />
+      <Route path="/create-work" element={<CreateWorkPage />} />
+      <Route path="/works/:work_id" element={<UpdateWorkPage />} />
+      <Route path="/create-review" element={<CreateReviewPage />} />
+      <Route path="/reviews/:review_id" element={<UpdateReviewPage />} />
+    </Routes>
   );
+
+  return <main>{publicRoutes}</main>;
 }
