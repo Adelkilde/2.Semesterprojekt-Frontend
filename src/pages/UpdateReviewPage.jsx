@@ -61,7 +61,7 @@ export default function UpdateReview() {
           </div>
           <ReviewForm review={review} saveReview={saveReview} />
           <button className="btn-delete" onClick={deleteReview}>
-            Slet værk
+            Slet anmeldelse
           </button>
         </>
       )}
