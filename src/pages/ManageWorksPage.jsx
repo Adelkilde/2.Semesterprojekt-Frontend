@@ -38,9 +38,7 @@ export default function ManageWorksPage() {
   });
 
   const handleSaveWork = async (formData) => {
-    const url = selectedWork
-      ? `https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works/${selectedWork.work_id}`
-      : "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works";
+    const url = selectedWork ? `https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works/${selectedWork.work_id}` : "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works";
 
     const method = selectedWork ? "PUT" : "POST";
 
@@ -108,12 +106,7 @@ export default function ManageWorksPage() {
         ))}
       </ul>
 
-      <WorkForm
-        saveWork={handleSaveWork}
-        deleteWork={handleDeleteWork}
-        work={selectedWork}
-        onCancelEdit={handleCancelEditWork}
-      />
+      <WorkForm saveWork={handleSaveWork} deleteWork={handleDeleteWork} work={selectedWork} onCancelEdit={handleCancelEditWork} />
     </div>
   );
 }

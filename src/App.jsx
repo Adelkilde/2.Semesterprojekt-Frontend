@@ -7,6 +7,7 @@ import Reviews from "./pages/ReviewsPage.jsx";
 import News from "./pages/NewsPage.jsx";
 import ManageAboutMe from "./pages/ManageAboutMePage.jsx";
 import ManageWorks from "./pages/ManageWorksPage.jsx";
+import ManageReviews from "./pages/ManageReviewsPage.jsx";
 // import ManageReviews from "./pages/ManageReviewsPage.jsx";
 // import ManageNews from "./pages/ManageNewsPage.jsx";
 // import ManageContactMe from "./pages/ManageContactMePage.jsx";
@@ -32,7 +33,8 @@ export default function App() {
           <Route path="/news" element={<News />} />
           {isAdmin && <Route path="/admin/manage-about-me" element={<ManageAboutMe />} />}
           {isAdmin && <Route path="/admin/manage-works" element={<ManageWorks />} />}
-          {/* {isAdmin && <Route path="/admin/manage-reviews" element={<ManageReviews />} />}
+          {isAdmin && <Route path="/admin/manage-reviews" element={<ManageReviews />} />}
+          {/* 
           {isAdmin && <Route path="/admin/manage-news" element={<ManageNews />} />}
           {isAdmin && <Route path="/admin/manage-contact-me" element={<ManageContactMe />} />} */}
 
