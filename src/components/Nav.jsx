@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-
 import LogoImage from "../assets/images/Logo4.cropped.png";
 
 export default function Navbar({ isAdmin }) {
