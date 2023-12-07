@@ -12,6 +12,7 @@ body {
   /* You can add more background properties such as position, attachment, etc., based on your needs */
   height: auto;
   min-height: 100vh;
+  font-family: Georgia, serif;
 }
 
 .logo {
