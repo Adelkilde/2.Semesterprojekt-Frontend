@@ -40,8 +40,8 @@ export default function WorkEditor({ saveWork, onCancelEdit, work }) {
     }
   }, [work]);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = (event) => {
