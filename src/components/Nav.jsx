@@ -8,26 +8,26 @@ export default function Navbar({ isAdmin }) {
     return (
       <nav>
         <NavLink to="/">
-          <img src={LogoImage} alt="Logo" />
+          <img className="logo" src={LogoImage} alt="Logo" />
         </NavLink>
-        <NavLink to="/admin/manage-about-me">Administrer Om Mig</NavLink>
-        <NavLink to="/admin/manage-works">Administrer værker</NavLink>
-        <NavLink to="/admin/manage-reviews">Administrer Anmeldelser</NavLink>
-        <NavLink to="/admin/manage-news">Administrer Nyheder</NavLink>
-        <NavLink to="/admin/manage-contact-me">Administrer Kontakt Information</NavLink>
+        <NavLink className="nav-link" to="/admin/manage-about-me">Administrer Om Mig</NavLink>
+        <NavLink className="nav-link" to="/admin/manage-works">Administrer værker</NavLink>
+        <NavLink className="nav-link" to="/admin/manage-reviews">Administrer Anmeldelser</NavLink>
+        <NavLink className="nav-link" to="/admin/manage-news">Administrer Nyheder</NavLink>
+        <NavLink className="nav-link" to="/admin/manage-contact-me">Administrer Kontakt Information</NavLink>
       </nav>
     );
   } else {
     return (
-      <nav>
+      <nav className="nav">
         <NavLink to="/">
-          <img src={LogoImage} alt="Logo" />
+        <img className="logo" src={LogoImage} alt="Logo" />
         </NavLink>
-        <NavLink to="/about-me">Om mig</NavLink>
-        <NavLink to="/works">Værker</NavLink>
-        <NavLink to="/reviews">Anmeldelser</NavLink>
-        <NavLink to="/news">Nyheder</NavLink>
-        <NavLink to="/contact-me">Kontakt mig</NavLink>
+        <NavLink className="nav-link" to="/about-me">Om mig</NavLink>
+        <NavLink className="nav-link" to="/works">Værker</NavLink>
+        <NavLink className="nav-link" to="/reviews">Anmeldelser</NavLink>
+        <NavLink className="nav-link" to="/news">Nyheder</NavLink>
+        <NavLink className="nav-link" to="/contact-me">Kontakt mig</NavLink>
       </nav>
     );
   }
