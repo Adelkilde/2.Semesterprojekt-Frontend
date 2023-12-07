@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Nav.jsx";
+import Logo from "./components/Logo.jsx";
 import AboutMe from "./pages/AboutMePage.jsx";
 import Works from "./pages/WorksPage.jsx";
 import Reviews from "./pages/ReviewsPage.jsx";
@@ -24,6 +25,7 @@ export default function App() {
 
   return (
     <>
+      <Logo />
       <Navbar isAdmin={isAdmin} />
       <main>
         <Routes>
@@ -31,7 +33,7 @@ export default function App() {
           <Route path="/works" element={<Works />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/news" element={<News />} />
-          <Route path="/contact-me" element={<ContactMe/>} />
+          <Route path="/contact-me" element={<ContactMe />} />
           {isAdmin && <Route path="/admin/manage-about-me" element={<ManageAboutMe />} />}
           {isAdmin && <Route path="/admin/manage-works" element={<ManageWorks />} />}
           {/* {isAdmin && <Route path="/admin/manage-reviews" element={<ManageReviews />} />}
