@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 
-export default function WorkForm({ saveWork, onCancelEdit, work }) {
+export default function WorkEditor({ saveWork, onCancelEdit, work }) {
   const [formData, setFormData] = useState({
-    author_id: "", // Updated to match the Sequelize model
+    author_id: "1",
     title: "",
-    publication_date: "", // Updated to match the Sequelize model
+    publication_date: "",
     publisher: "",
     description: "",
     image: "",
   });
 
-  const [author, setAuthor] = useState(null); // Change to null to handle loading state
+  const [author, setAuthor] = useState(null);
 
   useEffect(() => {
     const fetchAuthor = () => {
@@ -51,8 +51,8 @@ export default function WorkForm({ saveWork, onCancelEdit, work }) {
   };
 
   const handleCancelEditForm = () => {
-    onCancelEdit(); // Call onCancelEdit to clear the selected work
-    resetForm(); // Call resetForm after clearing the selected work
+    onCancelEdit();
+    resetForm();
   };
 
   const resetForm = () => {
@@ -71,9 +71,6 @@ export default function WorkForm({ saveWork, onCancelEdit, work }) {
       <label>
         Forfatter
         <select name="author_id" value={formData.author_id} onChange={handleChange}>
-          <option value="" disabled>
-            Vælg forfatter
-          </option>
           {author &&
             author.map((author) => (
               <option key={author.author_id} value={author.author_id}>
@@ -117,7 +114,7 @@ export default function WorkForm({ saveWork, onCancelEdit, work }) {
       <button type="submit">{work ? "Opdater værk" : "Opret værk"}</button>
       {work && (
         <button type="button" onClick={handleCancelEditForm}>
-          Annuller Redigering
+          Annuller ændringer
         </button>
       )}
     </form>
