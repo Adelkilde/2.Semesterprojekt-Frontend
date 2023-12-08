@@ -8,8 +8,12 @@ export default function ReviewsPage() {
       try {
         // Initiate multiple API requests simultaneously
         const [reviewsResponse, worksResponse] = await Promise.all([
-          fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/reviews"),
-          fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works"),
+          fetch(
+            "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/reviews"
+          ),
+          fetch(
+            "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works"
+          ),
         ]);
 
         // Extract JSON data from each response
@@ -18,8 +22,14 @@ export default function ReviewsPage() {
 
         // Update state with the combined data
         setData({
-          reviews: Object.keys(reviewsData).map((key) => ({ id: key, ...reviewsData[key] })),
-          works: Object.keys(worksData).map((key) => ({ id: key, ...worksData[key] })),
+          reviews: Object.keys(reviewsData).map((key) => ({
+            id: key,
+            ...reviewsData[key],
+          })),
+          works: Object.keys(worksData).map((key) => ({
+            id: key,
+            ...worksData[key],
+          })),
         });
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -55,7 +65,11 @@ export default function ReviewsPage() {
               </p>
               <p className="mb-1">
                 {new Date(review.createdAt)
-                  .toLocaleDateString("da-DK", { day: "2-digit", month: "2-digit", year: "numeric" })
+                  .toLocaleDateString("da-DK", {
+                    day: "2-digit",
+                    month: "2-digit",
+                    year: "numeric",
+                  })
                   .split(".")
                   .join("/")}
               </p>

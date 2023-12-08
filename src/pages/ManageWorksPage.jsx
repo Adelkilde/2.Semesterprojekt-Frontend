@@ -8,7 +8,8 @@ export default function ManageWorksPage() {
 
   const fetchWorks = async () => {
     try {
-      const url = "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works";
+      const url =
+        "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works";
       const response = await fetch(url);
       const data = await response.json();
       setWorks(data);
@@ -62,7 +63,9 @@ export default function ManageWorksPage() {
         fetchWorks();
         handleCancelEditWork(); // Clear selectedWork after saving
       } else {
-        console.log(selectedWork ? "Error updating work" : "Error creating new work");
+        console.log(
+          selectedWork ? "Error updating work" : "Error creating new work"
+        );
       }
     } catch (error) {
       console.error("An error occurred:", error);
@@ -70,7 +73,9 @@ export default function ManageWorksPage() {
   };
 
   const handleDeleteWork = async (work) => {
-    const confirmDelete = window.confirm(`Er du sikker på at du vil slette ${work.title}`);
+    const confirmDelete = window.confirm(
+      `Er du sikker på at du vil slette ${work.title}`
+    );
     if (confirmDelete) {
       const url = `https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works/${work.work_id}`;
       const response = await fetch(url, {
@@ -94,14 +99,22 @@ export default function ManageWorksPage() {
         {works.map((work) => (
           <li key={work.work_id} className="list-group-item">
             <p className="mb-1 h3">{work.title}</p>
-            {work.image && <img src={work.image} alt="Work Image" className="img-fluid" />}
+            {work.image && (
+              <img src={work.image} alt="Work Image" className="img-fluid" />
+            )}
             <p className="mb-1">Udgivelses dato: {work.publication_date}</p>
             <p className="mb-1">Forlag: {work.publisher}</p>
             <p className="mb-1">{work.description}</p>
-            <button className="btn btn-info mr-2" onClick={() => handleEditWork(work)}>
+            <button
+              className="btn btn-info mr-2"
+              onClick={() => handleEditWork(work)}
+            >
               Rediger
             </button>
-            <button className="btn btn-danger" onClick={() => handleDeleteWork(work)}>
+            <button
+              className="btn btn-danger"
+              onClick={() => handleDeleteWork(work)}
+            >
               Slet
             </button>
           </li>

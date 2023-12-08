@@ -5,21 +5,21 @@ export default function Navbar({ isAdmin }) {
 
   if (isAdmin) {
     return (
-      <nav>
+      <nav className="nav">
         <NavLink className="nav-link" to="/admin/manage-about-me">
-          Administrer Om Mig
+          Administrer om mig
         </NavLink>
         <NavLink className="nav-link" to="/admin/manage-works">
           Administrer værker
         </NavLink>
         <NavLink className="nav-link" to="/admin/manage-reviews">
-          Administrer Anmeldelser
+          Administrer anmeldelser
         </NavLink>
         <NavLink className="nav-link" to="/admin/manage-news">
-          Administrer Nyheder
+          Administrer nyheder
         </NavLink>
         <NavLink className="nav-link" to="/admin/manage-contact-me">
-          Administrer Kontakt Information
+          Administrer kontakt information
         </NavLink>
       </nav>
     );
