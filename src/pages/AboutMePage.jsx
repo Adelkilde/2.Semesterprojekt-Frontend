@@ -6,10 +6,14 @@ export default function AboutMePage() {
 
   useEffect(() => {
     async function fetchAuthor() {
-      const url = "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/author";
+      const url =
+        "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/author";
       const response = await fetch(url);
       const data = await response.json();
-      const authorArray = Object.keys(data).map((key) => ({ id: key, ...data[key] }));
+      const authorArray = Object.keys(data).map((key) => ({
+        id: key,
+        ...data[key],
+      }));
       setAuthor(authorArray);
     }
     fetchAuthor();
@@ -19,11 +23,17 @@ export default function AboutMePage() {
 
   return (
     <div className="container mt-5">
-      <h1>Om Mig</h1>
+      <h1>Om mig</h1>
       <ul className="list-group">
         {author.map((author) => (
           <li key={author.id} className="list-group-item">
-            {author.image && <img src={author.image} alt="author Image" className="img-fluid" />}
+            {author.image && (
+              <img
+                src={author.image}
+                alt="author Image"
+                className="img-fluid"
+              />
+            )}
             <p className="mb-1">{author.name}</p>
             <p className="mb-1">f. {author.birth_year}</p>
             <p className="mb-1">{author.biography}</p>

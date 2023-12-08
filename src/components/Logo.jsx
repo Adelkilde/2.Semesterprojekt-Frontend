@@ -5,7 +5,7 @@ import LogoImage from "../assets/images/Logo4.cropped.png";
 export default function Logo() {
   return (
     <NavLink to="/">
-      <img src={LogoImage} alt="Logo" />
+      <img className="logo" src={LogoImage} alt="Logo" />
     </NavLink>
   );
 }
