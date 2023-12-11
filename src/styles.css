@@ -150,37 +150,93 @@ h1 {
   font-size: 1.5rem;
 }
 
-/* Style specific to ReviewForm elements */
 .page form {
   display: flex;
   flex-direction: column;
-  width: 100%; /* Ensure the form fills the container's width */
-  max-width: 600px; /* Limiting the width of the form */
+  width: 100%;
+  max-width: 600px;
 }
 
-.page form label {
-  margin-bottom: 5px;
-}
-
-.page form input[type="text"],
-.page form textarea {
-  padding: 8px;
+.form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin-bottom: 10px;
+}
+
+label {
+  flex: 1;
+  margin-right: 10px;
+}
+
+input[type="text"],
+textarea {
+  flex: 2;
+  padding: 8px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  width: calc(100% - 16px); /* Adjusting for padding and border */
 }
 
-.page form button {
+button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: fit-content;
+  align-self: flex-start;
+}
+
+/* Authop form */
+
+#authorForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto; /* Add margin for spacing */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#authorForm label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: black; /* Set label color to black */
+}
+
+#authorForm input[type="text"],
+#authorForm textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: calc(100% - 22px); /* Adjusting for padding and border */
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+#authorForm input[type="text"]:focus,
+#authorForm textarea:focus {
+  border-color: #57bc90;
+}
+
+#authorForm button {
   background-color: #57bc90;
   color: #fff;
   border: none;
-  padding: 8px 20px;
+  padding: 12px 24px;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
   transition: background-color 0.3s ease;
+  align-self: center; /* Align button to the center */
 }
 
-.page form button:hover {
+#authorForm button:hover {
   background-color: #77c9d4;
 }
