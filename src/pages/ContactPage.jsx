@@ -35,7 +35,7 @@ export default function ContactMePage() {
             twitter: "https://twitter.com/example", // Fiktivt Twitter link
             linkedin: "https://linkedin.com/in/example", // Fiktivt LinkedIn link
             facebook: "https://facebook.com/example", // Fiktivt Facebook link
-            instagram: "https://instagram.com/example" // Fiktivt Instagram link
+            instagram: "https://www.instagram.com/caroline_storgaard_gyldmark/?fbclid=IwAR1sTNGJ3e4pXQAz5OBmrHTP7Gpgg0M1ZI4J81emGBumZMpByGOCcgybIUE" // Fiktivt Instagram link
           },
         }));
         setAuthors(authorArray);
@@ -56,7 +56,7 @@ export default function ContactMePage() {
           <li key={author.id} className="list-group-item">
             {/* {author.image && <img src={author.image} alt="author Image" className="img-fluid" />} */}
             {/* Kontaktinformation for hver forfatter */}
-            <p className="mb-1">Email: Placeholder Email{author.email}</p>
+            <p className="mb-1">Email: Caroline.storgaard.digter@gmail.com</p>
             <div className="social-media-links">
               {author.socialMedia && (
                 <>
