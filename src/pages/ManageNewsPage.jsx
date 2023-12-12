@@ -39,7 +39,6 @@ export default function ManageNewsPage() {
   };
 
   const handleCloseCreateForm = () => {
-    console.log("close create form");
     setCreateFormOpen(false);
   };
 
@@ -92,6 +91,7 @@ export default function ManageNewsPage() {
       const response = await fetch(
         url,
         fetchOptions(method, {
+          author_id: 1,
           headline: formData.headline,
           content: formData.content,
         })
@@ -99,9 +99,8 @@ export default function ManageNewsPage() {
 
       if (response.ok) {
         console.log("News updated successfully");
-        // Fetch the updated list of news
+        handleCloseCreateForm();
         fetchNews();
-        // Clear the selected news
         setSelectedNews(null);
       } else {
         console.error("An error occurred:", response);
