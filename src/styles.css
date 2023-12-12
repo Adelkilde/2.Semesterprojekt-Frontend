@@ -81,7 +81,8 @@ body {
 
 /* <--------------------------------------------- CONTACTMEPAGE CSS-------------------------------------> */
 .container {
-  max-width: 800px;
+  /* width: 700px; */
+  /* max-width: 800px; */
   margin: 50px auto 20px; 
   padding: 20px;
   background: #eaae69;
@@ -142,7 +143,6 @@ h1 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   color: #fff;
   text-align: center;
-  max-width: 600px; 
 }
 
 .page h1 {
@@ -154,7 +154,7 @@ h1 {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 .form-group {
@@ -195,10 +195,10 @@ button {
   flex-direction: column;
   align-items: center; /* Center horizontally */
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   margin: 20px auto; /* Add margin for spacing */
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #eaae69;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -206,12 +206,20 @@ button {
 #authorForm label {
   margin-bottom: 5px;
   font-weight: bold;
-  color: black; /* Set label color to black */
 }
 
-#authorForm input[type="text"],
-#authorForm textarea {
+#authorForm input[type="text"]{
   padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: calc(100% - 22px); /* Adjusting for padding and border */
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+#authorForm textarea {
+  padding: 30px;
   margin-bottom: 15px;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -230,6 +238,7 @@ button {
   color: #fff;
   border: none;
   padding: 12px 24px;
+  margin-bottom: 5px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
@@ -300,3 +309,20 @@ button {
   align-self: flex-start;
 }
 
+/* <--------------------------------------------- GLOBALFORM STRUKTUR CSS-------------------------------------> */
+/* Gør så den popper op */
+form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  /* max-width: 800px; */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #eaae69;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
