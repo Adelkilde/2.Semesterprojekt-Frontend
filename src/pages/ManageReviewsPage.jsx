@@ -72,8 +72,8 @@ export default function ManageReviewPage() {
   };
 
   return (
-    <div className="container mt-5">
-      <h1>About Me Page</h1>
+    <div id="authorForm" className="container mt-5">
+      <h1>Anmeldelser</h1>
       <div>
         {/* Display the list of reviews */}
         <ul className="list-group">
