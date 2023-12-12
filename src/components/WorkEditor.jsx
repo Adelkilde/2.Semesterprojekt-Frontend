@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function WorkEditor({ saveWork, onCancelEdit, work }) {
+export default function WorkEditor({ saveWork, onCancelEdit, onCancelCreate, work }) {
   const [formData, setFormData] = useState({
     author_id: "1",
     title: "",
@@ -55,6 +55,10 @@ export default function WorkEditor({ saveWork, onCancelEdit, work }) {
     resetForm();
   };
 
+  const handleCancelCreateForm = () => {
+    onCancelCreate();
+    resetForm();
+  };
   const resetForm = () => {
     setFormData({
       author_id: "",
@@ -99,13 +103,7 @@ export default function WorkEditor({ saveWork, onCancelEdit, work }) {
       </label>
       <label>
         Beskrivelse
-        <input
-          type="text"
-          name="description"
-          value={formData.description}
-          placeholder="Beskrivelse"
-          onChange={handleChange}
-        />
+        <input type="text" name="description" value={formData.description} placeholder="Beskrivelse" onChange={handleChange} />
       </label>
       <label>
         Billede
@@ -115,6 +113,12 @@ export default function WorkEditor({ saveWork, onCancelEdit, work }) {
       {work && (
         <button type="button" onClick={handleCancelEditForm}>
           Annuller ændringer
+        </button>
+      )}
+
+      {!work && (
+        <button type="button" onClick={handleCancelCreateForm}>
+          Annuller oprettelse
         </button>
       )}
     </form>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function ReviewEditor({ saveReview, onCancelEdit, review }) {
+export default function ReviewEditor({ saveReview, onCancelEdit, review, onCancelCreate }) {
   const [formData, setFormData] = useState({
     review_id: "",
     work_id: "",
@@ -9,6 +9,24 @@ export default function ReviewEditor({ saveReview, onCancelEdit, review }) {
     review_text: "",
     rating: "",
   });
+
+  const [works, setWorks] = useState([]);
+
+  useEffect(() => {
+    const fetchWorks = async () => {
+      try {
+        const response = await fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works");
+        const worksData = await response.json();
+        setWorks(worksData);
+      } catch (error) {
+        console.error("Error fetching works:", error);
+        throw error;
+      }
+    };
+
+    fetchWorks(); // Kalder funktionen her
+  }, []);
+
   useEffect(() => {
     if (review) {
       setFormData({
@@ -37,13 +55,17 @@ export default function ReviewEditor({ saveReview, onCancelEdit, review }) {
     onCancelEdit();
     resetForm();
   };
+  const handleCancelCreateForm = () => {
+    onCancelCreate();
+    resetForm();
+  };
 
   const resetForm = () => {
     setFormData({
       work_id: "",
       name: "",
       email: "",
-      text: "",
+      review_text: "",
       rating: "",
     });
   };
@@ -51,54 +73,46 @@ export default function ReviewEditor({ saveReview, onCancelEdit, review }) {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Work ID
-        <input
-          type="text"
-          name="work_id"
-          value={formData.work_id}
-          onChange={handleChange}
-        />
+        Værk
+        <select name="work_id" value={formData.work_id} onChange={handleChange}>
+          <option value="" disabled>
+            Vælg et værk
+          </option>
+          {works.map((work) => (
+            <option key={work.work_id} value={work.work_id}>
+              {work.title}
+            </option>
+          ))}
+        </select>
       </label>
       <label>
         Name
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-        />
+        <input type="text" name="name" value={formData.name} onChange={handleChange} />
       </label>
       <label>
         Email
-        <input
-          type="text"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
+        <input type="text" name="email" value={formData.email} onChange={handleChange} />
       </label>
       <label>
         Review Text
-        <input
-          type="text"
-          name="review_text"
-          value={formData.review_text}
-          onChange={handleChange}
-        />
+        <input type="text" name="review_text" value={formData.review_text} onChange={handleChange} />
       </label>
       <label>
         Rating
-        <input
-          type="text"
-          name="rating"
-          value={formData.rating}
-          onChange={handleChange}
-        />
+        <input type="text" name="rating" value={formData.rating} onChange={handleChange} />
       </label>
-      <button type="submit">Submit Review</button>
-      <button type="button" onClick={handleCancelEditForm}>
-        Cancel Edit
-      </button>
+      <button type="submit">{review ? "Opdater review" : "Opret review"}</button>
+      {review && (
+        <button type="button" onClick={handleCancelEditForm}>
+          Annuller ændringer
+        </button>
+      )}
+
+      {!review && (
+        <button type="button" onClick={handleCancelCreateForm}>
+          Annuller oprettelse
+        </button>
+      )}
     </form>
   );
 }
