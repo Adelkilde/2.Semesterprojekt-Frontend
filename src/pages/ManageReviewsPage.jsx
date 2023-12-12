@@ -102,7 +102,7 @@ export default function ManageReviewPage() {
                   handleEditReview(review);
                 }}
               >
-                Edit
+                ændre
               </button>
             </li>
           ))}
