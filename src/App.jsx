@@ -12,6 +12,7 @@ import ManageWorks from "./pages/ManageWorksPage.jsx";
 import ManageReviews from "./pages/ManageReviewsPage.jsx";
 // import ManageNews from "./pages/ManageNewsPage.jsx";
 // import ManageContactMe from "./pages/ManageContactMePage.jsx";
+import AdminButton from "./components/AdminButton.jsx";
 
 export default function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -48,6 +49,7 @@ export default function App() {
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        <AdminButton />
       </main>
     </>
   );
