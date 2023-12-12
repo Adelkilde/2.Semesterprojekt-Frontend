@@ -93,7 +93,7 @@ export default function ManageWorksPage() {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" id="authorForm">
       <h1>Værker</h1>
       <ul className="list-group">
         {works.map((work) => (
