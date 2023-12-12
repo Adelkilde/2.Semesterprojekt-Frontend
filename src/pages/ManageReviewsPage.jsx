@@ -109,7 +109,7 @@ export default function ManageReviewPage() {
   };
 
   return (
-    <div className="container mt-5">
+    <div id="authorForm" className="container mt-5">
       <h1>Reviews </h1>
       <div>
         <button onClick={handleOpenCreateForm}>opret anmeldelse</button>
