@@ -5,11 +5,11 @@
   text-align: center;
 }
 
+/* <--------------------------------------------- BACKGROUND CSS-------------------------------------> */
 body {
-  background-image: url("assets/images/background.jpg"); /* Replace 'path/to/your/image.jpg' with the path to your image */
-  background-size: cover; /* Adjust how the background image is displayed */
-  background-repeat: no-repeat; /* Prevent the background image from repeating */
-  /* You can add more background properties such as position, attachment, etc., based on your needs */
+  background-image: url("assets/images/background.jpg"); 
+  background-size: cover; 
+  background-repeat: no-repeat; 
   height: auto;
   min-height: 100vh;
   font-family: Georgia, serif;
@@ -51,7 +51,7 @@ body {
   color: #888;
 }
 
-/* This is some styling for the visitor navbar */
+/* <--------------------------------------------- NAVBAR CSS-------------------------------------> */
 .nav {
   background: #eaae69;
   padding: 15px;
@@ -79,10 +79,10 @@ body {
   height: 100%;
 }
 
-/* Styles for ContactMePage */
+/* <--------------------------------------------- CONTACTMEPAGE CSS-------------------------------------> */
 .container {
   max-width: 800px;
-  margin: 50px auto 20px; /* Adjust margin for top, right, bottom, left respectively */
+  margin: 50px auto 20px; 
   padding: 20px;
   background: #eaae69;
   border-radius: 10px;
@@ -117,20 +117,20 @@ h1 {
   transition: background-color 0.3s ease;
 }
 
-/* Hover effect for social media links */
+
 .social-media-links a:hover {
   background-color: rgba(255, 255, 255, 0.3);
   color: #ff0000;
 }
 
-/* Responsive styling */
+
 @media (max-width: 768px) {
   .list-group-item {
     font-size: 0.9rem;
   }
 }
 
-/* Styles for the form */
+/* <--------------------------------------------- GLOBAL SETTING FOR FORM CSS  -------------------------------------> */
 .page {
   margin-top: 30px;
   background: #eaae69;
@@ -142,7 +142,7 @@ h1 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   color: #fff;
   text-align: center;
-  max-width: 600px; /* Limiting the width of the entire section */
+  max-width: 600px; 
 }
 
 .page h1 {
@@ -188,7 +188,7 @@ button {
   align-self: flex-start;
 }
 
-/* Authop form */
+/* <--------------------------------------------- ABOUTMEPAGE FORM CSS-------------------------------------> */
 
 #authorForm {
   display: flex;
@@ -240,3 +240,63 @@ button {
 #authorForm button:hover {
   background-color: #77c9d4;
 }
+
+/* Works Style */
+
+.container {
+  margin-top: 30px;
+  background: #eaae69;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  text-align: center;
+  max-width: 800px; 
+}
+
+.container h1 {
+  margin: 10px 0 20px;
+  font-size: 1.5rem;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+label {
+  flex: 1;
+  margin-right: 10px;
+}
+
+input[type="text"],
+textarea {
+  flex: 2;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: fit-content;
+  align-self: flex-start;
+}
+
