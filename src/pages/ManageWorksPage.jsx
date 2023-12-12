@@ -78,9 +78,9 @@ export default function ManageWorksPage() {
         console.log(selectedWork ? "Work updated:" : "New work created:");
         fetchWorks();
         handleCancelEditWork(); // Clear selectedWork after saving
-        // if (!selectedWork) {
-        //   handleCloseCreateForm(); // Close the create form after saving
-        // }
+        if (!selectedWork) {
+          handleCloseCreateForm(); // Close the create form after saving
+        }
       } else {
         console.log(selectedWork ? "Error updating work" : "Error creating new work");
       }
