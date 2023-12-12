@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function ReviewEditor({ saveReview, onCancelEdit, review }) {
+export default function ReviewEditor({ saveReview, onCancelEdit, review, onCancelCreate }) {
   const [formData, setFormData] = useState({
     review_id: "",
     work_id: "",
@@ -55,6 +55,10 @@ export default function ReviewEditor({ saveReview, onCancelEdit, review }) {
     onCancelEdit();
     resetForm();
   };
+  const handleCancelCreateForm = () => {
+    onCancelCreate();
+    resetForm();
+  };
 
   const resetForm = () => {
     setFormData({
@@ -101,6 +105,12 @@ export default function ReviewEditor({ saveReview, onCancelEdit, review }) {
       {review && (
         <button type="button" onClick={handleCancelEditForm}>
           Annuller ændringer
+        </button>
+      )}
+
+      {!review && (
+        <button type="button" onClick={handleCancelCreateForm}>
+          Annuller oprettelse
         </button>
       )}
     </form>

@@ -8,7 +8,7 @@ export default function ManageReviewPage() {
   const [isCreateFormOpen, setCreateFormOpen] = useState(false);
   const [isEditFormOpen, setEditFormOpen] = useState(false);
 
-  async function fetchReview() {
+  const fetchReviews = async () => {
     try {
       const url = "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/reviews";
       const response = await fetch(url);
@@ -17,10 +17,10 @@ export default function ManageReviewPage() {
     } catch (error) {
       console.error("An error occurred:", error);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchReview();
+    fetchReviews();
   }, []);
 
   const handleEditReview = (review) => {
@@ -30,6 +30,24 @@ export default function ManageReviewPage() {
 
   const handleCancelEditReview = () => {
     setSelectedReview(null);
+  };
+
+  const handleOpenEditForm = () => {
+    setEditFormOpen(true);
+  };
+
+  const handleOpenCreateForm = () => {
+    setCreateFormOpen(true);
+    setSelectedReview(null);
+  };
+
+  const handleCloseCreateForm = () => {
+    setCreateFormOpen(false);
+  };
+
+  const handleCloseEditForm = () => {
+    setEditFormOpen(false);
+    handleCancelEditReview();
   };
 
   const fetchOptions = (method, body) => ({
@@ -59,8 +77,11 @@ export default function ManageReviewPage() {
 
       if (response.ok) {
         console.log(selectedReview ? "Review updated:" : "New review created:");
-        fetchReview();
+        fetchReviews();
         handleCancelEditReview(); // Clear selectedReview after saving
+        if (!selectedReview) {
+          handleCloseCreateForm(); // Close the create form after creating a new review
+        }
       } else {
         console.log(selectedReview ? "Error updating review" : "Error creating new review");
       }
@@ -68,27 +89,30 @@ export default function ManageReviewPage() {
       console.error("An error occurred:", error);
     }
   };
-  const handleOpenCreateForm = () => {
-    setCreateFormOpen(true);
-  };
 
-  const handleCloseCreateForm = () => {
-    setCreateFormOpen(false);
-  };
+  const handleDeleteReview = async (review) => {
+    const confirmDelete = window.confirm(`Er du sikker på at du vil slette dette review`);
+    if (confirmDelete) {
+      const url = `https://semesterprojekt2-deployment-with-azure.azurewebsites.net/reviews/${review.review_id}`;
+      const response = await fetch(url, {
+        method: "DELETE",
+      });
 
-  const handleOpenEditForm = () => {
-    setEditFormOpen(true);
-  };
-
-  const handleCloseEditForm = () => {
-    setEditFormOpen(false);
+      if (response.ok) {
+        console.log("Review deleted");
+        // Refresh the works list after deletion
+        fetchReviews();
+      } else {
+        console.log("Error deleting work");
+      }
+    }
   };
 
   return (
     <div className="container mt-5">
       <h1>Reviews </h1>
       <div>
-        <button onClick={handleOpenCreateForm}>Create Review</button>
+        <button onClick={handleOpenCreateForm}>opret anmeldelse</button>
         {/* Display the list of reviews */}
         <ul className="list-group">
           {reviews.map((review) => (
@@ -97,12 +121,11 @@ export default function ManageReviewPage() {
                 {review.name}: {review.review_text}
               </p>
               <p className="mb-1">{review.rating}</p>
-              <button
-                onClick={() => {
-                  handleEditReview(review);
-                }}
-              >
-                ændre
+              <button className="btn btn-info mr-2" onClick={() => handleEditReview(review)}>
+                Rediger
+              </button>
+              <button className="btn btn-danger" onClick={() => handleDeleteReview(review)}>
+                Slet
               </button>
             </li>
           ))}
@@ -110,7 +133,7 @@ export default function ManageReviewPage() {
       </div>
 
       <div>
-        {isCreateFormOpen && <ReviewForm saveReview={handleSaveReview} onCancelEdit={handleCloseCreateForm} review={selectedReview} />}
+        {isCreateFormOpen && <ReviewForm saveReview={handleSaveReview} onCancelCreate={handleCloseCreateForm} review={selectedReview} />}
         {isEditFormOpen && (
           <ReviewForm
             saveReview={handleSaveReview}
