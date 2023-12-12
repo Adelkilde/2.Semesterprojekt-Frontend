@@ -7,10 +7,14 @@ export default function ManageAboutMePage() {
   const [selectedAuthor, setSelectedAuthor] = useState(null);
 
   const fetchAuthor = async () => {
-    const url = "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/author";
+    const url =
+      "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/author";
     const response = await fetch(url);
     const data = await response.json();
-    const authorArray = Object.keys(data).map((key) => ({ id: key, ...data[key] }));
+    const authorArray = Object.keys(data).map((key) => ({
+      id: key,
+      ...data[key],
+    }));
     setAuthor(authorArray);
   };
 
@@ -56,19 +60,31 @@ export default function ManageAboutMePage() {
   return (
     <div id="authorForm" className="container mt-5">
       <h1>Om Mig</h1>
-      <ul  className="list-group">
+      <ul className="list-group">
         {author.map((author) => (
-          <li  key={author.author_id} className="list-group-item">
-            {author.image && <img src={author.image} alt="author Image" className="img-fluid" />}
+          <li key={author.author_id} className="list-group-item">
+            {author.image && (
+              <img
+                src={author.image}
+                alt="author Image"
+                className="img-fluid"
+              />
+            )}
             <p className="mb-1">{author.name}</p>
             <p className="mb-1">f. {author.birth_year}</p>
             <p className="mb-1">{author.biography}</p>
-            <button onClick={() => handleEditAuthor(author)}>Rediger Info</button>
+            <button onClick={() => handleEditAuthor(author)}>
+              Rediger info
+            </button>
           </li>
         ))}
       </ul>
       {selectedAuthor && (
-        <AboutMeEditor saveAboutMe={handleSaveAuthor} onCancelEdit={handleCancelEdit} aboutMe={selectedAuthor} />
+        <AboutMeEditor
+          saveAboutMe={handleSaveAuthor}
+          onCancelEdit={handleCancelEdit}
+          aboutMe={selectedAuthor}
+        />
       )}
     </div>
   );
