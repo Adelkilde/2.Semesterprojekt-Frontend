@@ -40,9 +40,7 @@ export default function AboutMeEditor({ saveAboutMe, onCancelEdit, aboutMe }) {
         <textarea name="biography" value={formData.biography} onChange={handleChange} />
       </label>
       <button type="submit">Gem ændringer</button>
-      <button type="button" onClick={onCancelEdit}>
-        Annuller ændringer
-      </button>
+      <button type="button" onClick={onCancelEdit}> Annuller ændringer </button>
     </form>
   );
 }

@@ -18,9 +18,9 @@ export default function Navbar({ isAdmin }) {
         <NavLink className="nav-link" to="/admin/manage-news">
           Administrer nyheder
         </NavLink>
-        <NavLink className="nav-link" to="/admin/manage-contact-me">
+        {/* <NavLink className="nav-link" to="/admin/manage-contact-me">
           Administrer kontakt information
-        </NavLink>
+        </NavLink> */}
       </nav>
     );
   } else {
