@@ -32,9 +32,6 @@ export default function ContactMePage() {
           id: key,
           ...data[key],
           socialMedia: {
-            twitter: "https://twitter.com/example", // Fiktivt Twitter link
-            linkedin: "https://linkedin.com/in/example", // Fiktivt LinkedIn link
-            facebook: "https://facebook.com/example", // Fiktivt Facebook link
             instagram: "https://www.instagram.com/caroline_storgaard_gyldmark/?fbclid=IwAR1sTNGJ3e4pXQAz5OBmrHTP7Gpgg0M1ZI4J81emGBumZMpByGOCcgybIUE" // Fiktivt Instagram link
           },
         }));
@@ -60,21 +57,6 @@ export default function ContactMePage() {
             <div className="social-media-links">
               {author.socialMedia && (
                 <>
-                  {author.socialMedia.twitter && (
-                    <a href={author.socialMedia.twitter} target="_blank" rel="noopener noreferrer">
-                      Twitter
-                    </a>
-                  )}
-                  {author.socialMedia.linkedin && (
-                    <a href={author.socialMedia.linkedin} target="_blank" rel="noopener noreferrer">
-                      LinkedIn
-                    </a>
-                  )}
-                  {author.socialMedia.facebook && (
-                    <a href={author.socialMedia.facebook} target="_blank" rel="noopener noreferrer">
-                      Facebook
-                    </a>
-                  )}
                   {author.socialMedia.instagram && (
                     <a href={author.socialMedia.instagram} target="_blank" rel="noopener noreferrer">
                       Instagram
