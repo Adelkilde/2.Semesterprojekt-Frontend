@@ -110,13 +110,13 @@ export default function ManageReviewPage() {
 
   return (
     <div id="authorForm" className="container mt-5">
-      <h1>Reviews </h1>
+      <h1>Anmeldelser </h1>
       <div>
-        <button onClick={handleOpenCreateForm}>opret anmeldelse</button>
+        <button onClick={handleOpenCreateForm}>Opret anmeldelse</button>
         {/* Display the list of reviews */}
         <ul className="list-group">
           {reviews.map((review) => (
-            <li key={review.review_id}>
+            <li key={review.review_id} className="list-group-item">
               <p className="mb-1">
                 {review.name}: {review.review_text}
               </p>

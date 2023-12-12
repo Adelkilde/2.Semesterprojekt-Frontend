@@ -86,7 +86,7 @@ export default function ReviewEditor({ saveReview, onCancelEdit, review, onCance
         </select>
       </label>
       <label>
-        Name
+        Navn
         <input type="text" name="name" value={formData.name} onChange={handleChange} />
       </label>
       <label>
@@ -94,14 +94,14 @@ export default function ReviewEditor({ saveReview, onCancelEdit, review, onCance
         <input type="text" name="email" value={formData.email} onChange={handleChange} />
       </label>
       <label>
-        Review Text
+        Anmeldelse 
         <input type="text" name="review_text" value={formData.review_text} onChange={handleChange} />
       </label>
       <label>
-        Rating
+        Stjerner
         <input type="text" name="rating" value={formData.rating} onChange={handleChange} />
       </label>
-      <button type="submit">{review ? "Opdater review" : "Opret review"}</button>
+      <button type="submit">{review ? "Opdater anmeldelse" : "Opret anmeldelse"}</button>
       {review && (
         <button type="button" onClick={handleCancelEditForm}>
           Annuller ændringer
