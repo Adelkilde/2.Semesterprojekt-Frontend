@@ -13,10 +13,19 @@ export default function NewsPage() {
         id: key,
         ...data[key],
       }));
+      newsArray.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
       setNews(newsArray);
     }
     getNews();
   }, []);
+  const formatDate = (dateString) => {
+    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
+    const formattedDate = new Date(dateString).toLocaleDateString(
+      "en-GB",
+      options
+    );
+    return formattedDate;
+  };
   console.log("News page");
 
   return (
@@ -27,6 +36,7 @@ export default function NewsPage() {
           <li key={article.id} className="list-group-item">
             <h2>{article.headline}</h2>
             <div>{article.content}</div>
+            <div>{formatDate(article.createdAt)}</div>
           </li>
         ))}
       </ul>

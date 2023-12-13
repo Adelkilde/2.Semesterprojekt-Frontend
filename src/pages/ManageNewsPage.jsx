@@ -14,6 +14,7 @@ export default function ManageNewsPage() {
         "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news";
       const response = await fetch(url);
       const data = await response.json();
+      data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
       setNews(data);
     } catch (error) {
       console.error("An error occurred:", error);
@@ -60,28 +61,30 @@ export default function ManageNewsPage() {
   };
 
   const handleDeleteNews = async (news) => {
-    const confirmDelete = window.confirm(`Er du sikker på du vil slette ${news.headline}?`);
+    const confirmDelete = window.confirm(
+      `Er du sikker på du vil slette ${news.headline}?`
+    );
     if (confirmDelete) {
-    const url = `https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news/${news.news_id}`;
-    const method = "DELETE";
+      const url = `https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news/${news.news_id}`;
+      const method = "DELETE";
 
-    try {
-      const response = await fetch(url, {
-        method,
-      });
+      try {
+        const response = await fetch(url, {
+          method,
+        });
 
-      if (response.ok) {
-        console.log("News deleted successfully");
-        // Fetch the updated list of news
-        fetchNews();
-      } else {
-        console.error("An error occurred:", response);
+        if (response.ok) {
+          console.log("News deleted successfully");
+          // Fetch the updated list of news
+          fetchNews();
+        } else {
+          console.error("An error occurred:", response);
+        }
+      } catch (error) {
+        console.error("An error occurred:", error);
       }
-    } catch (error) {
-      console.error("An error occurred:", error);
     }
-  }
-};
+  };
 
   const handleSaveNews = async (formData) => {
     const url = selectedNews
@@ -111,8 +114,7 @@ export default function ManageNewsPage() {
     } catch (error) {
       console.error("An error occurred:", error);
     }
-};
-
+  };
 
   return (
     <div id="authorForm" className="container mt-5">
