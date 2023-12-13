@@ -115,20 +115,40 @@ export default function ManageReviewPage() {
         <button onClick={handleOpenCreateForm}>Opret anmeldelse</button>
         {/* Display the list of reviews */}
         <ul className="list-group">
-          {reviews.map((review) => (
-            <li key={review.review_id} className="list-group-item">
-              <p className="mb-1">
-                {review.name}: {review.review_text}
-              </p>
-              <p className="mb-1">{review.rating}</p>
-              <button className="btn btn-info mr-2" onClick={() => handleEditReview(review)}>
-                Rediger
-              </button>
-              <button className="btn btn-danger" onClick={() => handleDeleteReview(review)}>
-                Slet
-              </button>
-            </li>
-          ))}
+          {reviews.map((review) => {
+            const stars = Array.from({ length: review.rating }, (_, index) => (
+              <span key={index} role="img" aria-label="star">
+                ⭐
+              </span>
+            ));
+
+            return (
+              <li key={review.review_id} className="list-group-item">
+                <p className="mb-1">{stars}</p>
+                <p className="mb-1">{review.review_text}</p>
+                <p className="mb-1">{review.date}</p>
+                <p className="mb-1">
+                  {new Date(review.createdAt)
+                    .toLocaleDateString("da-DK", {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    })
+                    .split(".")
+                    .join("/")}
+                </p>
+                <p className="mb-1">
+                  Af <strong>{review.name}</strong>
+                </p>
+                <button className="btn btn-info mr-2" onClick={() => handleEditReview(review)}>
+                  Rediger
+                </button>
+                <button className="btn btn-danger" onClick={() => handleDeleteReview(review)}>
+                  Slet
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
