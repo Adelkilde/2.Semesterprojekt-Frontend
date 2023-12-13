@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 
-export default function WorkEditor({ saveWork, onCancelEdit, onCancelCreate, work }) {
+export default function WorkEditor({
+  saveWork,
+  onCancelEdit,
+  onCancelCreate,
+  work,
+}) {
   const [formData, setFormData] = useState({
     author_id: "1",
     title: "",
     publication_date: "",
     publisher: "",
     description: "",
+    excerpt: "",
     image: "",
   });
 
@@ -14,7 +20,8 @@ export default function WorkEditor({ saveWork, onCancelEdit, onCancelCreate, wor
 
   useEffect(() => {
     const fetchAuthor = () => {
-      const url = "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/author";
+      const url =
+        "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/author";
       return fetch(url).then((response) => response.json());
     };
 
@@ -35,6 +42,7 @@ export default function WorkEditor({ saveWork, onCancelEdit, onCancelCreate, wor
         publication_date: work.publication_date || "",
         publisher: work.publisher || "",
         description: work.description || "",
+        excerpt: work.excerpt || "",
         image: work.image || "",
       });
     }
@@ -66,6 +74,7 @@ export default function WorkEditor({ saveWork, onCancelEdit, onCancelCreate, wor
       publication_date: "",
       publisher: "",
       description: "",
+      excerpt: "",
       image: "",
     });
   };
@@ -74,7 +83,11 @@ export default function WorkEditor({ saveWork, onCancelEdit, onCancelCreate, wor
     <form onSubmit={handleSubmit}>
       <label>
         Forfatter
-        <select name="author_id" value={formData.author_id} onChange={handleChange}>
+        <select
+          name="author_id"
+          value={formData.author_id}
+          onChange={handleChange}
+        >
           {author &&
             author.map((author) => (
               <option key={author.author_id} value={author.author_id}>
@@ -85,7 +98,13 @@ export default function WorkEditor({ saveWork, onCancelEdit, onCancelCreate, wor
       </label>
       <label>
         Titel
-        <input type="text" name="title" value={formData.title} placeholder="Titel" onChange={handleChange} />
+        <input
+          type="text"
+          name="title"
+          value={formData.title}
+          placeholder="Titel"
+          onChange={handleChange}
+        />
       </label>
       <label>
         Udgivelsesdato
@@ -99,15 +118,43 @@ export default function WorkEditor({ saveWork, onCancelEdit, onCancelCreate, wor
       </label>
       <label>
         Forlag
-        <input type="text" name="publisher" value={formData.publisher} placeholder="Forlag" onChange={handleChange} />
+        <input
+          type="text"
+          name="publisher"
+          value={formData.publisher}
+          placeholder="Forlag"
+          onChange={handleChange}
+        />
       </label>
       <label>
         Beskrivelse
-        <input type="text" name="description" value={formData.description} placeholder="Beskrivelse" onChange={handleChange} />
+        <input
+          type="text"
+          name="description"
+          value={formData.description}
+          placeholder="Beskrivelse"
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Uddrag
+        <input
+          type="text"
+          name="excerpt"
+          value={formData.excerpt}
+          placeholder="Uddrag"
+          onChange={handleChange}
+        />
       </label>
       <label>
         Billede
-        <input type="text" name="image" value={formData.image} placeholder="Billede" onChange={handleChange} />
+        <input
+          type="text"
+          name="image"
+          value={formData.image}
+          placeholder="Billede"
+          onChange={handleChange}
+        />
       </label>
       <button type="submit">{work ? "Opdater værk" : "Opret værk"}</button>
       {work && (
