@@ -80,7 +80,7 @@ export default function ManageWorksPage() {
       if (response.ok) {
         console.log(selectedWork ? "Work updated:" : "New work created:");
         fetchWorks();
-        handleCancelEditWork();
+        handleCloseEditForm();
         if (!selectedWork) {
           handleCloseCreateForm();
         }
