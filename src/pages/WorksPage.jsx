@@ -4,6 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function WorksPage() {
   const [works, setWorks] = useState([]);
 
+  const formatDate = (dateString) => {
+    const [year, month, day] = dateString.split("-");
+    return `${day}-${month}-${year}`;
+  };
   useEffect(() => {
     async function fetchWorks() {
       const url =
@@ -31,7 +35,9 @@ export default function WorksPage() {
             {work.image && (
               <img src={work.image} alt="Work Image" className="img-fluid" />
             )}
-            <p className="mb-1">Udgivelses dato: {work.publication_date}</p>
+            <p className="mb-1">
+              Udgivelses dato: {formatDate(work.publication_date)}
+            </p>
             <p className="mb-1">Forlag: {work.publisher}</p>
             <p className="mb-1">{work.description}</p>
           </li>
