@@ -136,7 +136,7 @@ export default function ManageWorksPage() {
                 })}
               </p>
               <hr />
-              <button className="btn btn-info mr-2" onClick={() => handleEditWork(work)}>
+              <button className="btn btn-info button-margin-right" onClick={() => handleEditWork(work)}>
                 Rediger
               </button>
               <button className="btn btn-danger" onClick={() => handleDeleteWork(work)}>

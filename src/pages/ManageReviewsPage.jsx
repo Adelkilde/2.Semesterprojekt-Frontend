@@ -59,7 +59,9 @@ export default function ManageReviewPage() {
   });
 
   const handleSaveReview = async (formData) => {
-    const url = selectedReview ? `https://semesterprojekt2-deployment-with-azure.azurewebsites.net/reviews/${selectedReview.review_id}` : "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/reviews";
+    const url = selectedReview
+      ? `https://semesterprojekt2-deployment-with-azure.azurewebsites.net/reviews/${selectedReview.review_id}`
+      : "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/reviews";
 
     const method = selectedReview ? "PUT" : "POST";
 
@@ -121,7 +123,7 @@ export default function ManageReviewPage() {
                 {review.name}: {review.review_text}
               </p>
               <p className="mb-1">{review.rating}</p>
-              <button className="btn btn-info mr-2" onClick={() => handleEditReview(review)}>
+              <button className="btn btn-info button-margin-right" onClick={() => handleEditReview(review)}>
                 Rediger
               </button>
               <button className="btn btn-danger" onClick={() => handleDeleteReview(review)}>
@@ -133,7 +135,9 @@ export default function ManageReviewPage() {
       </div>
 
       <div>
-        {isCreateFormOpen && <ReviewForm saveReview={handleSaveReview} onCancelCreate={handleCloseCreateForm} review={selectedReview} />}
+        {isCreateFormOpen && (
+          <ReviewForm saveReview={handleSaveReview} onCancelCreate={handleCloseCreateForm} review={selectedReview} />
+        )}
         {isEditFormOpen && (
           <ReviewForm
             saveReview={handleSaveReview}

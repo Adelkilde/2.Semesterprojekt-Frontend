@@ -7,9 +7,9 @@
 
 /* <--------------------------------------------- BACKGROUND CSS-------------------------------------> */
 body {
-  background-image: url("assets/images/background.jpg"); 
-  background-size: cover; 
-  background-repeat: no-repeat; 
+  background-image: url("assets/images/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   height: auto;
   min-height: 100vh;
   font-family: Georgia, serif;
@@ -83,7 +83,7 @@ body {
 .container {
   /* width: 700px; */
   /* max-width: 800px; */
-  margin: 50px auto 20px; 
+  margin: 50px auto 20px;
   padding: 20px;
   background: #eaae69;
   border-radius: 10px;
@@ -118,12 +118,10 @@ h1 {
   transition: background-color 0.3s ease;
 }
 
-
 .social-media-links a:hover {
   background-color: rgba(255, 255, 255, 0.3);
   color: #ff0000;
 }
-
 
 @media (max-width: 768px) {
   .list-group-item {
@@ -212,7 +210,7 @@ button {
   font-weight: bold;
 }
 
-#authorForm input[type="text"]{
+#authorForm input[type="text"] {
   padding: 10px;
   margin-bottom: 15px;
   border-radius: 5px;
@@ -232,7 +230,6 @@ button {
   height: 250px; /* Adjust the height as needed */
   transition: border-color 0.3s ease;
 }
-
 
 #authorForm input[type="text"]:focus,
 #authorForm textarea:focus {
@@ -285,7 +282,7 @@ form {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   color: #fff;
   text-align: center;
-  max-width: 800px; 
+  max-width: 800px;
 }
 
 .container h1 {
@@ -331,6 +328,10 @@ button {
   align-self: flex-start;
 }
 
+/* BUTTON SPACING */
+.button-margin-right {
+  margin-right: 10px;
+}
 
 /* <--------------------------------------------- GLOBALFORM STRUKTUR CSS-------------------------------------> */
 /* Gør så den popper op */

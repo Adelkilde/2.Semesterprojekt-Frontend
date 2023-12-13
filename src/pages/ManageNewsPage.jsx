@@ -10,8 +10,7 @@ export default function ManageNewsPage() {
 
   async function fetchNews() {
     try {
-      const url =
-        "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news";
+      const url = "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news";
       const response = await fetch(url);
       const data = await response.json();
       data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
@@ -61,9 +60,7 @@ export default function ManageNewsPage() {
   };
 
   const handleDeleteNews = async (news) => {
-    const confirmDelete = window.confirm(
-      `Er du sikker på du vil slette ${news.headline}?`
-    );
+    const confirmDelete = window.confirm(`Er du sikker på du vil slette ${news.headline}?`);
     if (confirmDelete) {
       const url = `https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news/${news.news_id}`;
       const method = "DELETE";
@@ -126,24 +123,15 @@ export default function ManageNewsPage() {
             <li key={news.news_id} className="list-group-item">
               <h2>{news.headline}</h2>
               <p>{news.content}</p>
-              <button onClick={() => handleEditNews(news)}>
+              <button className="btn btn-info button-margin-right" onClick={() => handleEditNews(news)}>
                 {" "}
                 Rediger nyhed{" "}
               </button>
-              <button onClick={() => handleDeleteNews(news)}>
-                {" "}
-                Slet nyhed{" "}
-              </button>
+              <button onClick={() => handleDeleteNews(news)}> Slet nyhed </button>
             </li>
           ))}
         </ul>
-        {selectedNews && (
-          <NewsForm
-            news={selectedNews}
-            saveNews={handleSaveNews}
-            onCancelEdit={handleCancelEditNews}
-          />
-        )}
+        {selectedNews && <NewsForm news={selectedNews} saveNews={handleSaveNews} onCancelEdit={handleCancelEditNews} />}
       </div>
       <div>
         {isCreateFormOpen && (
