@@ -12,7 +12,6 @@ export default function WorkEditor({
     publication_date: "",
     publisher: "",
     description: "",
-    excerpt: "",
     image: "",
   });
 
@@ -42,7 +41,6 @@ export default function WorkEditor({
         publication_date: work.publication_date || "",
         publisher: work.publisher || "",
         description: work.description || "",
-        excerpt: work.excerpt || "",
         image: work.image || "",
       });
     }
@@ -74,7 +72,6 @@ export default function WorkEditor({
       publication_date: "",
       publisher: "",
       description: "",
-      excerpt: "",
       image: "",
     });
   };
@@ -133,16 +130,6 @@ export default function WorkEditor({
           name="description"
           value={formData.description}
           placeholder="Beskrivelse"
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Uddrag
-        <input
-          type="text"
-          name="excerpt"
-          value={formData.excerpt}
-          placeholder="Uddrag"
           onChange={handleChange}
         />
       </label>

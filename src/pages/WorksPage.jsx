@@ -31,7 +31,6 @@ export default function WorksPage() {
             )}
             <p className="mb-1">Udgivelses dato: {work.publication_date}</p>
             <p className="mb-1">Forlag: {work.publisher}</p>
-            <p className="mb-1">{work.excerpt}</p>
             <p className="mb-1">{work.description}</p>
           </li>
         ))}

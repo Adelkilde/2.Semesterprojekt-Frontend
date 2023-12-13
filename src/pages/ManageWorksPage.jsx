@@ -72,7 +72,6 @@ export default function ManageWorksPage() {
           title: formData.title,
           publication_date: formData.publication_date,
           publisher: formData.publisher,
-          excerpt: formData.excerpt,
           description: formData.description,
           image: formData.image,
         })
@@ -128,7 +127,6 @@ export default function ManageWorksPage() {
               )}
               <p className="mb-1">Udgivelses dato: {work.publication_date}</p>
               <p className="mb-1">Forlag: {work.publisher}</p>
-              <p className="mb-1">{work.excerpt}</p>
               <p className="mb-1">{work.description}</p>
               <button
                 className="btn btn-info mr-2"
