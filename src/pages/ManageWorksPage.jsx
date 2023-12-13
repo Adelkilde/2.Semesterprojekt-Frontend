@@ -7,6 +7,10 @@ export default function ManageWorksPage() {
   const [selectedWork, setSelectedWork] = useState(null);
   const [isCreateFormOpen, setCreateFormOpen] = useState(false);
   const [isEditFormOpen, setEditFormOpen] = useState(false);
+  const formatDate = (dateString) => {
+    const [year, month, day] = dateString.split("-");
+    return `${day}-${month}-${year}`;
+  };
   const fetchWorks = async () => {
     try {
       const url =
@@ -125,7 +129,9 @@ export default function ManageWorksPage() {
               {work.image && (
                 <img src={work.image} alt="Work Image" className="img-fluid" />
               )}
-              <p className="mb-1">Udgivelses dato: {work.publication_date}</p>
+              <p className="mb-1">
+                Udgivelses dato: {formatDate(work.publication_date)}
+              </p>
               <p className="mb-1">Forlag: {work.publisher}</p>
               <p className="mb-1">{work.description}</p>
               <button
