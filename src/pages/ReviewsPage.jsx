@@ -3,39 +3,27 @@ import { useEffect, useState } from "react";
 export default function ReviewsPage() {
   const [data, setData] = useState({ reviews: [], works: [] });
 
-  useEffect(() => {
-    async function fetchReviewsAndWorks() {
-      try {
-        // Initiate multiple API requests simultaneously
-        const [reviewsResponse, worksResponse] = await Promise.all([
-          fetch(
-            "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/reviews"
-          ),
-          fetch(
-            "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works"
-          ),
-        ]);
-
-        // Extract JSON data from each response
-        const reviewsData = await reviewsResponse.json();
-        const worksData = await worksResponse.json();
-
-        // Update state with the combined data
-        setData({
-          reviews: Object.keys(reviewsData).map((key) => ({
-            id: key,
-            ...reviewsData[key],
-          })),
-          works: Object.keys(worksData).map((key) => ({
-            id: key,
-            ...worksData[key],
-          })),
-        });
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+  const fetchReviewsAndWorks = async () => {
+    try {
+      const [reviewsResponse, worksResponse] = await Promise.all([fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/reviews"), fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works")]);
+      const reviewsData = await reviewsResponse.json();
+      const worksData = await worksResponse.json();
+      setData({
+        reviews: Object.keys(reviewsData).map((key) => ({
+          id: key,
+          ...reviewsData[key],
+        })),
+        works: Object.keys(worksData).map((key) => ({
+          id: key,
+          ...worksData[key],
+        })),
+      });
+    } catch (error) {
+      console.error("An error occurred:", error);
     }
+  };
 
+  useEffect(() => {
     fetchReviewsAndWorks();
   }, []);
 

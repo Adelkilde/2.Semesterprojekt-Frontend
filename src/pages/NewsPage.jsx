@@ -3,21 +3,19 @@ import { useEffect, useState } from "react";
 export default function NewsPage() {
   const [news, setNews] = useState([]);
 
-  useEffect(() => {
-    async function getNews() {
-      const url =
-        "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news";
-      const response = await fetch(url);
+  const fetchData = async () => {
+    try {
+      const response = await fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news");
       const data = await response.json();
-      const newsArray = Object.keys(data).map((key) => ({
-        id: key,
-        ...data[key],
-      }));
-      setNews(newsArray);
+      setNews(data);
+    } catch (error) {
+      console.error("An error occurred:", error);
     }
-    getNews();
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
-  console.log("News page");
 
   return (
     <div className="container mt-5">

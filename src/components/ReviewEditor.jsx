@@ -94,12 +94,18 @@ export default function ReviewEditor({ saveReview, onCancelEdit, review, onCance
         <input type="text" name="email" value={formData.email} onChange={handleChange} />
       </label>
       <label>
-        Anmeldelse 
+        Anmeldelse
         <input type="text" name="review_text" value={formData.review_text} onChange={handleChange} />
       </label>
       <label>
         Stjerner
-        <input type="text" name="rating" value={formData.rating} onChange={handleChange} />
+        <select name="rating" value={formData.rating} onChange={handleChange}>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
       </label>
       <button type="submit">{review ? "Opdater anmeldelse" : "Opret anmeldelse"}</button>
       {review && (

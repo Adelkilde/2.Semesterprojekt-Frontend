@@ -4,18 +4,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function WorksPage() {
   const [works, setWorks] = useState([]);
 
-  useEffect(() => {
-    async function fetchWorks() {
-      const url =
-        "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works";
+  const fetchWorks = async () => {
+    try {
+      const url = "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works";
       const response = await fetch(url);
       const data = await response.json();
-      const worksArray = Object.keys(data).map((key) => ({
-        id: key,
-        ...data[key],
-      }));
-      setWorks(worksArray);
+      setWorks(data);
+    } catch (error) {
+      console.error("An error occurred:", error);
     }
+  };
+
+  useEffect(() => {
     fetchWorks();
   }, []);
 
@@ -28,9 +28,7 @@ export default function WorksPage() {
         {works.map((work) => (
           <li key={work.id} className="list-group-item">
             <p className="mb-1 h3">{work.title}</p>
-            {work.image && (
-              <img src={work.image} alt="Work Image" className="img-fluid" />
-            )}
+            {work.image && <img src={work.image} alt="Work Image" className="img-fluid" />}
             <p className="mb-1">Udgivelses dato: {work.publication_date}</p>
             <p className="mb-1">Forlag: {work.publisher}</p>
             <p className="mb-1">{work.description}</p>

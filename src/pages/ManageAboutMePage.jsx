@@ -3,19 +3,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AboutMeEditor from "../components/AboutMeEditor";
 
 export default function ManageAboutMePage() {
-  const [author, setAuthor] = useState([]);
+  const [author, setAuthor] = useState({});
   const [selectedAuthor, setSelectedAuthor] = useState(null);
 
   const fetchAuthor = async () => {
-    const url =
-      "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/author";
-    const response = await fetch(url);
+    const response = await fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/author/1");
     const data = await response.json();
-    const authorArray = Object.keys(data).map((key) => ({
-      id: key,
-      ...data[key],
-    }));
-    setAuthor(authorArray);
+    setAuthor(data);
   };
 
   useEffect(() => {
@@ -61,31 +55,15 @@ export default function ManageAboutMePage() {
     <div id="authorForm" className="container mt-5">
       <h1>Om Mig</h1>
       <ul className="list-group">
-        {author.map((author) => (
-          <li key={author.author_id} className="list-group-item">
-            {author.image && (
-              <img
-                src={author.image}
-                alt="author Image"
-                className="img-fluid"
-              />
-            )}
-            <p className="mb-1">{author.name}</p>
-            <p className="mb-1">f. {author.birth_year}</p>
-            <p className="mb-1">{author.biography}</p>
-            <button onClick={() => handleEditAuthor(author)}>
-              Rediger info
-            </button>
-          </li>
-        ))}
+        <li key={author.author_id} className="list-group-item">
+          {author.image && <img src={author.image} alt="author Image" className="img-fluid" />}
+          <p className="mb-1">{author.name}</p>
+          <p className="mb-1">f. {author.birth_year}</p>
+          <p className="mb-1">{author.biography}</p>
+          <button onClick={() => handleEditAuthor(author)}>Rediger info</button>
+        </li>
       </ul>
-      {selectedAuthor && (
-        <AboutMeEditor
-          saveAboutMe={handleSaveAuthor}
-          onCancelEdit={handleCancelEdit}
-          aboutMe={selectedAuthor}
-        />
-      )}
+      {selectedAuthor && <AboutMeEditor saveAboutMe={handleSaveAuthor} onCancelEdit={handleCancelEdit} aboutMe={selectedAuthor} />}
     </div>
   );
 }

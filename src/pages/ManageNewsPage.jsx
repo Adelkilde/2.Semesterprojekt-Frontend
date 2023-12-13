@@ -8,17 +8,19 @@ export default function ManageNewsPage() {
   const [isCreateFormOpen, setCreateFormOpen] = useState(false);
   const [isEditFormOpen, setEditFormOpen] = useState(false);
 
-  async function fetchNews() {
+  const fetchData = async () => {
     try {
-      const url =
-        "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news";
-      const response = await fetch(url);
+      const response = await fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news");
       const data = await response.json();
       setNews(data);
     } catch (error) {
       console.error("An error occurred:", error);
     }
-  }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const fetchOptions = (method, body) => ({
     method,
@@ -27,10 +29,6 @@ export default function ManageNewsPage() {
     },
     body: JSON.stringify(body),
   });
-
-  useEffect(() => {
-    fetchNews();
-  }, []);
 
   const handleOpenCreateForm = () => {
     setCreateFormOpen(true);
@@ -62,31 +60,29 @@ export default function ManageNewsPage() {
   const handleDeleteNews = async (news) => {
     const confirmDelete = window.confirm(`Er du sikker på du vil slette ${news.headline}?`);
     if (confirmDelete) {
-    const url = `https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news/${news.news_id}`;
-    const method = "DELETE";
+      const url = `https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news/${news.news_id}`;
+      const method = "DELETE";
 
-    try {
-      const response = await fetch(url, {
-        method,
-      });
+      try {
+        const response = await fetch(url, {
+          method,
+        });
 
-      if (response.ok) {
-        console.log("News deleted successfully");
-        // Fetch the updated list of news
-        fetchNews();
-      } else {
-        console.error("An error occurred:", response);
+        if (response.ok) {
+          console.log("News deleted successfully");
+          // Fetch the updated list of news
+          fetchNews();
+        } else {
+          console.error("An error occurred:", response);
+        }
+      } catch (error) {
+        console.error("An error occurred:", error);
       }
-    } catch (error) {
-      console.error("An error occurred:", error);
     }
-  }
-};
+  };
 
   const handleSaveNews = async (formData) => {
-    const url = selectedNews
-      ? `https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news/${selectedNews.news_id}`
-      : "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news";
+    const url = selectedNews ? `https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news/${selectedNews.news_id}` : "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news";
 
     const method = selectedNews ? "PUT" : "POST";
 
@@ -111,8 +107,7 @@ export default function ManageNewsPage() {
     } catch (error) {
       console.error("An error occurred:", error);
     }
-};
-
+  };
 
   return (
     <div id="authorForm" className="container mt-5">
@@ -124,24 +119,12 @@ export default function ManageNewsPage() {
             <li key={news.news_id} className="list-group-item">
               <h2>{news.headline}</h2>
               <p>{news.content}</p>
-              <button onClick={() => handleEditNews(news)}>
-                {" "}
-                Rediger nyhed{" "}
-              </button>
-              <button onClick={() => handleDeleteNews(news)}>
-                {" "}
-                Slet nyhed{" "}
-              </button>
+              <button onClick={() => handleEditNews(news)}> Rediger nyhed </button>
+              <button onClick={() => handleDeleteNews(news)}> Slet nyhed </button>
             </li>
           ))}
         </ul>
-        {selectedNews && (
-          <NewsForm
-            news={selectedNews}
-            saveNews={handleSaveNews}
-            onCancelEdit={handleCancelEditNews}
-          />
-        )}
+        {selectedNews && <NewsForm news={selectedNews} saveNews={handleSaveNews} onCancelEdit={handleCancelEditNews} />}
       </div>
       <div>
         {isCreateFormOpen && (
