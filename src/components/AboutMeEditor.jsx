@@ -33,14 +33,26 @@ export default function AboutMeEditor({ saveAboutMe, onCancelEdit, aboutMe }) {
     <form onSubmit={handleSubmit}>
       <label>
         Billede URL
-        <input type="text" name="image" value={formData.image} onChange={handleChange} />
+        <input
+          type="text"
+          name="image"
+          value={formData.image}
+          onChange={handleChange}
+        />
       </label>
       <label>
         Biografi
-        <textarea name="biography" value={formData.biography} onChange={handleChange} />
+        <textarea
+          name="biography"
+          value={formData.biography}
+          onChange={handleChange}
+        />
       </label>
       <button type="submit">Gem ændringer</button>
-      <button type="button" onClick={onCancelEdit}> Annuller ændringer </button>
+      <button type="button" onClick={onCancelEdit}>
+        {" "}
+        Annuller ændringer{" "}
+      </button>
     </form>
   );
 }

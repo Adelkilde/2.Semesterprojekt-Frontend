@@ -80,9 +80,9 @@ export default function ManageWorksPage() {
       if (response.ok) {
         console.log(selectedWork ? "Work updated:" : "New work created:");
         fetchWorks();
-        handleCancelEditWork(); // Clear selectedWork after saving
+        handleCancelEditWork();
         if (!selectedWork) {
-          handleCloseCreateForm(); // Close the create form after saving
+          handleCloseCreateForm();
         }
       } else {
         console.log(
@@ -106,7 +106,6 @@ export default function ManageWorksPage() {
 
       if (response.ok) {
         console.log("Work deleted");
-        // Refresh the works list after deletion
         fetchWorks();
       } else {
         console.log("Error deleting work");

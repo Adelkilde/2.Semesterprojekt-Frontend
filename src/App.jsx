@@ -11,7 +11,6 @@ import ManageAboutMe from "./pages/ManageAboutMePage.jsx";
 import ManageWorks from "./pages/ManageWorksPage.jsx";
 import ManageReviews from "./pages/ManageReviewsPage.jsx";
 import ManageNews from "./pages/ManageNewsPage.jsx";
-// import ManageContactMe from "./pages/ManageContactMePage.jsx";
 
 export default function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -43,8 +42,9 @@ export default function App() {
           {isAdmin && (
             <Route path="/admin/manage-reviews" element={<ManageReviews />} />
           )}
-           {isAdmin && <Route path="/admin/manage-news" element={<ManageNews />} />} 
-          {/* {isAdmin && <Route path="/admin/manage-contact-me" element={<ManageContactMe />} />}  */}
+          {isAdmin && (
+            <Route path="/admin/manage-news" element={<ManageNews />} />
+          )}
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
