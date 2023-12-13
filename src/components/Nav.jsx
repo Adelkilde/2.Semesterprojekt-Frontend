@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
 
 export default function Navbar({ isAdmin }) {
-  console.log("isAdmin (Navbar):", isAdmin);
-
   if (isAdmin) {
+    const handleUserPageClick = () => {
+      isAdmin(false);
+    };
     return (
       <nav className="nav">
         <NavLink className="nav-link" to="/admin/manage-about-me">
@@ -18,9 +19,9 @@ export default function Navbar({ isAdmin }) {
         <NavLink className="nav-link" to="/admin/manage-news">
           Administrer nyheder
         </NavLink>
-        {/* <NavLink className="nav-link" to="/admin/manage-contact-me">
-          Administrer kontakt information
-        </NavLink> */}
+        <NavLink className="nav-link" to="/" onClick={handleUserPageClick}>
+          Brugersiden
+        </NavLink>
       </nav>
     );
   } else {
