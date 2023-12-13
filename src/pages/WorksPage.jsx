@@ -36,7 +36,7 @@ export default function WorksPage() {
               <img src={work.image} alt="Work Image" className="img-fluid" />
             )}
             <p className="mb-1">
-              Udgivelses dato: {formatDate(work.publication_date)}
+              Udgivelsesdato: {formatDate(work.publication_date)}
             </p>
             <p className="mb-1">Forlag: {work.publisher}</p>
             <p className="mb-1">{work.description}</p>
