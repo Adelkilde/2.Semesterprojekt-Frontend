@@ -39,7 +39,7 @@ export default function App() {
           {isAdmin && <Route path="/admin/manage-reviews" element={<ManageReviews />} />}
           {isAdmin && <Route path="/admin/manage-news" element={<ManageNews />} />}
 
-          <Route path="*" element={<Navigate to="/" />} />
+          {/* <Route path="*" element={<Navigate to="/" />} /> */}
         </Routes>
       </main>
     </>
