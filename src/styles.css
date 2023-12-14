@@ -34,36 +34,37 @@ body {
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 } */
-
 .logo {
-  width: 40%;
-  height: 100%;
-  max-width: 200px; /* Tilføjet en max-bredde for responsivitet */
+  width: 100%; /* Increase the size of the logo */
+  max-width: 400px; /* Added max-width for responsiveness */
+  height: auto; /* Maintain aspect ratio */
+  padding-bottom: 10px;
 }
 
 .logo-small {
-  width: 6%;
-  height: auto; /* Brug auto-højde for at bevare proportioner */
+  /* display: none; */
+  width: 8%; /* Increase the size of the small logo */
+  height: auto; /* Maintain aspect ratio */
   position: absolute;
-  left: 200px; /* Juster denne værdi efter behov for at placere det venstre for navbar */
-  top: 8%; /* Centrer lodret i forhold til forældrelementet */
-  transform: translateY(-50%); /* Flytter det opad halvdelen af sin egen højde for at centrere det lodret */
+  left: 9%;
+  top: 0%;
 }
 
 @media screen and (max-width: 768px) {
   .logo {
-    width: 6%; /* Ændrer størrelsen af det store logo */
-    max-width: none; /* Fjerner max-bredde for at tilpasse størrelsen på mindre skærme */
+    width: 8%; /* Adjust size for smaller screens */
+    max-width: none; /* Remove max-width for smaller screens */
     position: fixed;
-    left: 10px; /* Placering af det store logo til venstre */
-    top: 50px; /* Juster afstanden fra toppen efter behov */
+    left: 10px;
+    top: 50px;
   }
 
   .logo-small {
-    display: block; /* Viser det lille logo på mindre skærme */
+    display: block;
+    width: 8%; /* Adjust size for smaller screens */
     position: fixed;
-    left: 10px; /* Placering af det lille logo til venstre */
-    top: 50px; /* Juster afstanden fra toppen efter behov */
+    left: 10px;
+    top: 50px;
   }
 }
 
