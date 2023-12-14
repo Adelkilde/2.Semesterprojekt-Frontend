@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NewsForm from "../components/NewsEditor";
+import FormatDate from "../components/FormatDate";
 
 export default function ManageNewsPage() {
   const [news, setNews] = useState([]);
@@ -117,15 +118,18 @@ export default function ManageNewsPage() {
       <div>
         <button onClick={handleOpenCreateForm}>Opret nyhed</button>
         <ul className="list-group">
-          {news.map((news) => (
-            <li key={news.news_id} className="list-group-item">
-              <h2>{news.headline}</h2>
-              <p>{news.content}</p>
-              <button className="btn btn-info button-margin-right" onClick={() => handleEditNews(news)}>
+          {news.map((article) => (
+            <li key={article.news_id} className="list-group-item">
+              <h2>{article.headline}</h2>
+              <p>{article.content}</p>
+              <p className="mb-1">
+                <FormatDate dateString={new Date(article.createdAt).toISOString().split("T")[0]} />
+              </p>
+              <button className="btn btn-info button-margin-right" onClick={() => handleEditNews(article)}>
                 {" "}
                 Rediger nyhed{" "}
               </button>
-              <button onClick={() => handleDeleteNews(news)}> Slet nyhed </button>
+              <button onClick={() => handleDeleteNews(article)}> Slet nyhed </button>
             </li>
           ))}
         </ul>
