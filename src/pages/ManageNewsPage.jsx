@@ -8,7 +8,7 @@ export default function ManageNewsPage() {
   const [isCreateFormOpen, setCreateFormOpen] = useState(false);
   const [isEditFormOpen, setEditFormOpen] = useState(false);
 
-  const fetchData = async () => {
+  const fetchNews = async () => {
     try {
       const response = await fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news");
       const data = await response.json();
@@ -19,7 +19,7 @@ export default function ManageNewsPage() {
   };
 
   useEffect(() => {
-    fetchData();
+    fetchNews();
   }, []);
 
   const fetchOptions = (method, body) => ({
