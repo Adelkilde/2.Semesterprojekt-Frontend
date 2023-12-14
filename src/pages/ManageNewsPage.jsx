@@ -71,7 +71,6 @@ export default function ManageNewsPage() {
 
         if (response.ok) {
           console.log("News deleted successfully");
-          // Fetch the updated list of news
           fetchNews();
         } else {
           console.error("An error occurred:", response);

@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function WorkEditor({
-  saveWork,
-  onCancelEdit,
-  onCancelCreate,
-  work,
-}) {
+export default function WorkEditor({ saveWork, onCancelEdit, onCancelCreate, work }) {
   const [formData, setFormData] = useState({
     author_id: "1",
     title: "",
@@ -19,8 +14,7 @@ export default function WorkEditor({
 
   useEffect(() => {
     const fetchAuthor = () => {
-      const url =
-        "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/author";
+      const url = "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/author";
       return fetch(url).then((response) => response.json());
     };
 
@@ -80,11 +74,7 @@ export default function WorkEditor({
     <form onSubmit={handleSubmit}>
       <label>
         Forfatter
-        <select
-          name="author_id"
-          value={formData.author_id}
-          onChange={handleChange}
-        >
+        <select name="author_id" value={formData.author_id} onChange={handleChange}>
           {author &&
             author.map((author) => (
               <option key={author.author_id} value={author.author_id}>
@@ -95,19 +85,13 @@ export default function WorkEditor({
       </label>
       <label>
         Titel
-        <input
-          type="text"
-          name="title"
-          value={formData.title}
-          placeholder="Titel"
-          onChange={handleChange}
-        />
+        <input type="text" name="title" value={formData.title} placeholder="Titel" onChange={handleChange} />
       </label>
       <label>
         Udgivelsesdato
         <input
           type="date"
-          name="publication_date" // Updated to match the Sequelize model
+          name="publication_date"
           value={formData.publication_date}
           placeholder="Udgivelsesdato"
           onChange={handleChange}
@@ -115,32 +99,15 @@ export default function WorkEditor({
       </label>
       <label>
         Forlag
-        <input
-          type="text"
-          name="publisher"
-          value={formData.publisher}
-          placeholder="Forlag"
-          onChange={handleChange}
-        />
+        <input type="text" name="publisher" value={formData.publisher} placeholder="Forlag" onChange={handleChange} />
       </label>
       <label>
         Beskrivelse
-        <textarea
-          name="description"
-          value={formData.description}
-          placeholder="Beskrivelse"
-          onChange={handleChange}
-        />
+        <textarea name="description" value={formData.description} placeholder="Beskrivelse" onChange={handleChange} />
       </label>
       <label>
         Billede
-        <input
-          type="text"
-          name="image"
-          value={formData.image}
-          placeholder="Billede"
-          onChange={handleChange}
-        />
+        <input type="text" name="image" value={formData.image} placeholder="Billede" onChange={handleChange} />
       </label>
       <button type="submit">{work ? "Opdater værk" : "Opret værk"}</button>
       {work && (

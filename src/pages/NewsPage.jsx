@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import FormatDate from "../components/FormatDate";
 
 export default function NewsPage() {
   const [news, setNews] = useState([]);
 
-  const fetchData = async () => {
+  const fetchNews = async () => {
     try {
       const response = await fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news");
       const data = await response.json();
@@ -14,13 +15,8 @@ export default function NewsPage() {
   };
 
   useEffect(() => {
-    fetchData();
+    fetchNews();
   }, []);
-  const formatDate = (dateString) => {
-    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString("en-GB", options);
-    return formattedDate;
-  };
 
   return (
     <div className="container mt-5">
@@ -29,8 +25,10 @@ export default function NewsPage() {
         {news.map((article) => (
           <li key={article.news_id} className="list-group-item">
             <h2>{article.headline}</h2>
-            <div>{article.content}</div>
-            <div>{formatDate(article.createdAt)}</div>
+            <p>{article.content}</p>
+            <p className="mb-1">
+              <FormatDate dateString={new Date(article.createdAt).toISOString().split("T")[0]} />
+            </p>
           </li>
         ))}
       </ul>

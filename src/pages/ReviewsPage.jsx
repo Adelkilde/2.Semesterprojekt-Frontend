@@ -47,7 +47,7 @@ export default function ReviewsPage() {
           ));
 
           return (
-            <li key={review.id} className="list-group-item">
+            <li key={review.review_id} className="list-group-item">
               <p className="mb-1 h3">{work ? work.title : "Loading..."}</p>
               <p className="mb-1 h5">{stars}</p>
               <p className="mb-1">{review.review_text}</p>

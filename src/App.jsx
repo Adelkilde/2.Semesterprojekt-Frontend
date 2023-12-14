@@ -1,20 +1,21 @@
 import { useState, useEffect } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import Nav from "./components/Nav.jsx";
-import Logo from "./components/Logo.jsx";
-import AboutMe from "./pages/AboutMePage.jsx";
-import Works from "./pages/WorksPage.jsx";
-import Reviews from "./pages/ReviewsPage.jsx";
-import News from "./pages/NewsPage.jsx";
-import ContactMe from "./pages/ContactPage.jsx";
-import ManageAboutMe from "./pages/ManageAboutMePage.jsx";
-import ManageWorks from "./pages/ManageWorksPage.jsx";
-import ManageReviews from "./pages/ManageReviewsPage.jsx";
-import ManageNews from "./pages/ManageNewsPage.jsx";
+import Nav from "./components/Nav";
+import Logo from "./components/Logo";
+import AboutMe from "./pages/AboutMePage";
+import Works from "./pages/WorksPage";
+import Reviews from "./pages/ReviewsPage";
+import News from "./pages/NewsPage";
+import ContactMe from "./pages/ContactPage";
+import ManageAboutMe from "./pages/ManageAboutMePage";
+import ManageWorks from "./pages/ManageWorksPage";
+import ManageReviews from "./pages/ManageReviewsPage";
+import ManageNews from "./pages/ManageNewsPage";
 
 export default function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     if (location.pathname.includes("/admin")) {
@@ -24,7 +25,7 @@ export default function App() {
 
   return (
     <>
-      <Logo />
+      <Logo isSmall={!isHomePage} />
       <Nav isAdmin={isAdmin} />
       <main>
         <Routes>
@@ -33,18 +34,10 @@ export default function App() {
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/news" element={<News />} />
           <Route path="/contact-me" element={<ContactMe />} />
-          {isAdmin && (
-            <Route path="/admin/manage-about-me" element={<ManageAboutMe />} />
-          )}
-          {isAdmin && (
-            <Route path="/admin/manage-works" element={<ManageWorks />} />
-          )}
-          {isAdmin && (
-            <Route path="/admin/manage-reviews" element={<ManageReviews />} />
-          )}
-          {isAdmin && (
-            <Route path="/admin/manage-news" element={<ManageNews />} />
-          )}
+          {isAdmin && <Route path="/admin/manage-about-me" element={<ManageAboutMe />} />}
+          {isAdmin && <Route path="/admin/manage-works" element={<ManageWorks />} />}
+          {isAdmin && <Route path="/admin/manage-reviews" element={<ManageReviews />} />}
+          {isAdmin && <Route path="/admin/manage-news" element={<ManageNews />} />}
 
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

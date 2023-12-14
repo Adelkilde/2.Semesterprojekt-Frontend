@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import WorkForm from "../components/WorkEditor";
+import FormatDate from "../components/FormatDate";
 
 export default function ManageWorksPage() {
   const [works, setWorks] = useState([]);
   const [selectedWork, setSelectedWork] = useState(null);
   const [isCreateFormOpen, setCreateFormOpen] = useState(false);
   const [isEditFormOpen, setEditFormOpen] = useState(false);
-  const formatDate = (dateString) => {
-    const [year, month, day] = dateString.split("-");
-    return `${day}-${month}-${year}`;
-  };
   const fetchWorks = async () => {
     try {
       const url = "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works";
@@ -122,7 +119,9 @@ export default function ManageWorksPage() {
             <li key={work.work_id} className="list-group-item">
               <p className="mb-1 h3">{work.title}</p>
               {work.image && <img src={work.image} alt="Work Image" className="img-fluid" />}
-              <p className="mb-1">Udgivelsesdato: {formatDate(work.publication_date)}</p>
+              <p className="mb-1">
+                Udgivelsesdato: <FormatDate dateString={work.publication_date} />{" "}
+              </p>
               <p className="mb-1">Forlag: {work.publisher}</p>
               <hr />
               <p className="mb-1">

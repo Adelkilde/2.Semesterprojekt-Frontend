@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ReviewForm from "../components/ReviewEditor";
+import FormatDate from "../components/FormatDate";
 
 export default function ManageReviewPage() {
   const [data, setData] = useState({ reviews: [], works: [] });
@@ -148,14 +149,7 @@ export default function ManageReviewPage() {
                 <p className="mb-1">{review.review_text}</p>
                 <p className="mb-1">{review.date}</p>
                 <p className="mb-1">
-                  {new Date(review.createdAt)
-                    .toLocaleDateString("da-DK", {
-                      day: "2-digit",
-                      month: "2-digit",
-                      year: "numeric",
-                    })
-                    .split(".")
-                    .join("/")}
+                  <FormatDate dateString={new Date(review.createdAt).toISOString().split("T")[0]} />
                 </p>
                 <p className="mb-1">
                   Af <strong>{review.name}</strong>
