@@ -5,7 +5,6 @@
   text-align: center;
 }
 
-/* <--------------------------------------------- BACKGROUND CSS-------------------------------------> */
 body {
   background-image: url("assets/images/background.jpg");
   background-size: cover;
@@ -14,37 +13,17 @@ body {
   min-height: 100vh;
   font-family: Georgia, serif;
 }
-/* 
-.logo {
-  width: 40%;
-  height: 100%;
-}
 
-.logo-small {
-  width: 5.5%;
-  height: 10%;
-  position: absolute;
-  left: 450px;
-  top: 5px;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-} */
 .logo {
-  width: 100%; /* Increase the size of the logo */
-  max-width: 400px; /* Added max-width for responsiveness */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%; 
+  max-width: 400px; 
+  height: auto; 
   padding-bottom: 10px;
 }
 
 .logo-small {
-  /* display: none; */
-  width: 8%; /* Increase the size of the small logo */
-  height: auto; /* Maintain aspect ratio */
+  width: 8%; 
+  height: auto; 
   position: absolute;
   left: 9%;
   top: 0%;
@@ -52,8 +31,8 @@ body {
 
 @media screen and (max-width: 768px) {
   .logo {
-    width: 8%; /* Adjust size for smaller screens */
-    max-width: none; /* Remove max-width for smaller screens */
+    width: 8%; 
+    max-width: none; 
     position: fixed;
     left: 10px;
     top: 50px;
@@ -61,7 +40,7 @@ body {
 
   .logo-small {
     display: block;
-    width: 8%; /* Adjust size for smaller screens */
+    width: 8%; 
     position: fixed;
     left: 10px;
     top: 50px;
@@ -69,7 +48,6 @@ body {
 }
 
 
-/* <--------------------------------------------- NAVBAR CSS-------------------------------------> */
 .nav {
   background: #eaae69;
   padding: 15px;
@@ -92,10 +70,7 @@ body {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* <--------------------------------------------- CONTACTMEPAGE CSS-------------------------------------> */
 .container {
-  /* width: 700px; */
-  /* max-width: 800px; */
   margin: 50px auto 20px;
   padding: 20px;
   background: #eaae69;
@@ -142,7 +117,6 @@ h1 {
   }
 }
 
-/* <--------------------------------------------- GLOBAL SETTING FOR FORM CSS  -------------------------------------> */
 .page {
   margin-top: 30px;
   background: #eaae69;
@@ -203,15 +177,14 @@ button {
   align-self: flex-start;
 }
 
-/* <--------------------------------------------- ABOUTMEPAGE FORM CSS-------------------------------------> */
 
 #authorForm {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center horizontally */
+  align-items: center;
   width: 100%;
   max-width: 800px;
-  margin: 20px auto; /* Add margin for spacing */
+  margin: 20px auto; 
   padding: 20px;
   background-color: #eaae69;
   border-radius: 8px;
@@ -228,7 +201,7 @@ button {
   margin-bottom: 15px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  width: calc(100% - 22px); /* Adjusting for padding and border */
+  width: calc(100% - 22px); 
   font-size: 16px;
   transition: border-color 0.3s ease;
 }
@@ -238,9 +211,9 @@ button {
   margin-bottom: 15px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  width: calc(100% - 22px); /* Adjusting for padding and border */
+  width: calc(100% - 22px); 
   font-size: 16px;
-  height: 250px; /* Adjust the height as needed */
+  height: 250px; 
   transition: border-color 0.3s ease;
 }
 
@@ -259,7 +232,7 @@ button {
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
-  align-self: center; /* Align button to the center */
+  align-self: center; 
 }
 
 #authorForm button:hover {
@@ -282,7 +255,6 @@ form {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Works Style */
 
 .container {
   margin-top: 30px;
@@ -341,13 +313,10 @@ button {
   align-self: flex-start;
 }
 
-/* BUTTON SPACING */
 .button-margin-right {
   margin-right: 10px;
 }
 
-/* <--------------------------------------------- GLOBALFORM STRUKTUR CSS-------------------------------------> */
-/* Gør så den popper op */
 form {
   position: fixed;
   top: 50%;
@@ -355,7 +324,6 @@ form {
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
-  /* max-width: 800px; */
   margin: 0 auto;
   padding: 20px;
   background-color: #eaae69;
