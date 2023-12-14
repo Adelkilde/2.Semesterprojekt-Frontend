@@ -22,15 +22,17 @@ export default function NewsPage() {
     <div className="container mt-5">
       <h1>Nyheder</h1>
       <ul className="list-group">
-        {news.map((article) => (
-          <li key={article.news_id} className="list-group-item">
-            <h2>{article.headline}</h2>
-            <p>{article.content}</p>
-            <p className="mb-1">
-              <FormatDate dateString={new Date(article.createdAt).toISOString().split("T")[0]} />
-            </p>
-          </li>
-        ))}
+        {news
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .map((article) => (
+            <li key={article.news_id} className="list-group-item">
+              <h2>{article.headline}</h2>
+              <p>{article.content}</p>
+              <p className="mb-1">
+                <FormatDate dateString={new Date(article.createdAt).toISOString().split("T")[0]} />
+              </p>
+            </li>
+          ))}
       </ul>
     </div>
   );

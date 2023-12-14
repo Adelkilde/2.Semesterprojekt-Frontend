@@ -118,20 +118,22 @@ export default function ManageNewsPage() {
       <div>
         <button onClick={handleOpenCreateForm}>Opret nyhed</button>
         <ul className="list-group">
-          {news.map((article) => (
-            <li key={article.news_id} className="list-group-item">
-              <h2>{article.headline}</h2>
-              <p>{article.content}</p>
-              <p className="mb-1">
-                <FormatDate dateString={new Date(article.createdAt).toISOString().split("T")[0]} />
-              </p>
-              <button className="btn btn-info button-margin-right" onClick={() => handleEditNews(article)}>
-                {" "}
-                Rediger nyhed{" "}
-              </button>
-              <button onClick={() => handleDeleteNews(article)}> Slet nyhed </button>
-            </li>
-          ))}
+          {news
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+            .map((article) => (
+              <li key={article.news_id} className="list-group-item">
+                <h2>{article.headline}</h2>
+                <p>{article.content}</p>
+                <p className="mb-1">
+                  <FormatDate dateString={new Date(article.createdAt).toISOString().split("T")[0]} />
+                </p>
+                <button className="btn btn-info button-margin-right" onClick={() => handleEditNews(article)}>
+                  {" "}
+                  Rediger nyhed{" "}
+                </button>
+                <button onClick={() => handleDeleteNews(article)}> Slet nyhed </button>
+              </li>
+            ))}
         </ul>
         {selectedNews && <NewsForm news={selectedNews} saveNews={handleSaveNews} onCancelEdit={handleCancelEditNews} />}
       </div>
