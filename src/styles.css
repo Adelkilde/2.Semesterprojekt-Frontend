@@ -14,7 +14,7 @@ body {
   min-height: 100vh;
   font-family: Georgia, serif;
 }
-
+/* 
 .logo {
   width: 40%;
   height: 100%;
@@ -33,7 +33,40 @@ body {
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
+} */
+
+.logo {
+  width: 40%;
+  height: 100%;
+  max-width: 200px; /* Tilføjet en max-bredde for responsivitet */
 }
+
+.logo-small {
+  width: 6%;
+  height: auto; /* Brug auto-højde for at bevare proportioner */
+  position: absolute;
+  left: 200px; /* Juster denne værdi efter behov for at placere det venstre for navbar */
+  top: 8%; /* Centrer lodret i forhold til forældrelementet */
+  transform: translateY(-50%); /* Flytter det opad halvdelen af sin egen højde for at centrere det lodret */
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    width: 6%; /* Ændrer størrelsen af det store logo */
+    max-width: none; /* Fjerner max-bredde for at tilpasse størrelsen på mindre skærme */
+    position: fixed;
+    left: 10px; /* Placering af det store logo til venstre */
+    top: 50px; /* Juster afstanden fra toppen efter behov */
+  }
+
+  .logo-small {
+    display: block; /* Viser det lille logo på mindre skærme */
+    position: fixed;
+    left: 10px; /* Placering af det lille logo til venstre */
+    top: 50px; /* Juster afstanden fra toppen efter behov */
+  }
+}
+
 
 /* <--------------------------------------------- NAVBAR CSS-------------------------------------> */
 .nav {
