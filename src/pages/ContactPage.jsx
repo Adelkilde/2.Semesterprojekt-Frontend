@@ -31,7 +31,7 @@ export default function ContactMePage() {
       <h1>Kontakt Mig</h1>
       <ul className="list-group">
         {authors.map((author) => (
-          <li key={author.id} className="list-group-item">
+          <li key={author.author_id} className="list-group-item">
             <p className="mb-1">Email: Caroline.storgaard.digter@gmail.com</p>
             <div className="social-media-links">
               {author.socialMedia && (

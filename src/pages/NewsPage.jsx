@@ -21,14 +21,13 @@ export default function NewsPage() {
     const formattedDate = new Date(dateString).toLocaleDateString("en-GB", options);
     return formattedDate;
   };
-  console.log("News page");
 
   return (
     <div className="container mt-5">
       <h1>Nyheder</h1>
       <ul className="list-group">
         {news.map((article) => (
-          <li key={article.id} className="list-group-item">
+          <li key={article.news_id} className="list-group-item">
             <h2>{article.headline}</h2>
             <div>{article.content}</div>
             <div>{formatDate(article.createdAt)}</div>

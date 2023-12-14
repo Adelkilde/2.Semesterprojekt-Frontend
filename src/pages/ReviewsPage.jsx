@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
+import FormatDate from "../components/FormatDate";
 
 export default function ReviewsPage() {
   const [data, setData] = useState({ reviews: [], works: [] });
 
   const fetchReviewsAndWorks = async () => {
     try {
-      const [reviewsResponse, worksResponse] = await Promise.all([fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/reviews"), fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works")]);
+      const [reviewsResponse, worksResponse] = await Promise.all([
+        fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/reviews"),
+        fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works"),
+      ]);
       const reviewsData = await reviewsResponse.json();
       const worksData = await worksResponse.json();
       setData({
@@ -34,7 +38,6 @@ export default function ReviewsPage() {
       <h1>Anmeldelser</h1>
       <ul className="list-group">
         {reviews.map((review) => {
-          // Find the work object with the matching id
           const work = works.find((work) => work.work_id === review.work_id);
 
           const stars = Array.from({ length: review.rating }, (_, index) => (
@@ -52,14 +55,7 @@ export default function ReviewsPage() {
                 Af <strong>{review.name}</strong>
               </p>
               <p className="mb-1">
-                {new Date(review.createdAt)
-                  .toLocaleDateString("da-DK", {
-                    day: "2-digit",
-                    month: "2-digit",
-                    year: "numeric",
-                  })
-                  .split(".")
-                  .join("/")}
+                <FormatDate dateString={new Date(review.createdAt).toISOString().split("T")[0]} />
               </p>
             </li>
           );
