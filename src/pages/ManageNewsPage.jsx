@@ -8,17 +8,20 @@ export default function ManageNewsPage() {
   const [isCreateFormOpen, setCreateFormOpen] = useState(false);
   const [isEditFormOpen, setEditFormOpen] = useState(false);
 
-  async function fetchNews() {
+  const fetchNews = async () => {
     try {
-      const url = "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news";
-      const response = await fetch(url);
+      const response = await fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news");
       const data = await response.json();
       data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
       setNews(data);
     } catch (error) {
       console.error("An error occurred:", error);
     }
-  }
+  };
+
+  useEffect(() => {
+    fetchNews();
+  }, []);
 
   const fetchOptions = (method, body) => ({
     method,
@@ -27,10 +30,6 @@ export default function ManageNewsPage() {
     },
     body: JSON.stringify(body),
   });
-
-  useEffect(() => {
-    fetchNews();
-  }, []);
 
   const handleOpenCreateForm = () => {
     setCreateFormOpen(true);

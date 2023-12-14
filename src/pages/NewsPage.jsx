@@ -3,27 +3,22 @@ import { useEffect, useState } from "react";
 export default function NewsPage() {
   const [news, setNews] = useState([]);
 
-  useEffect(() => {
-    async function getNews() {
-      const url =
-        "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news";
-      const response = await fetch(url);
+  const fetchData = async () => {
+    try {
+      const response = await fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/news");
       const data = await response.json();
-      const newsArray = Object.keys(data).map((key) => ({
-        id: key,
-        ...data[key],
-      }));
-      newsArray.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      setNews(newsArray);
+      setNews(data);
+    } catch (error) {
+      console.error("An error occurred:", error);
     }
-    getNews();
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
   const formatDate = (dateString) => {
     const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString(
-      "en-GB",
-      options
-    );
+    const formattedDate = new Date(dateString).toLocaleDateString("en-GB", options);
     return formattedDate;
   };
   console.log("News page");

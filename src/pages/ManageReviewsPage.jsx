@@ -3,25 +3,39 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ReviewForm from "../components/ReviewEditor";
 
 export default function ManageReviewPage() {
-  const [reviews, setReviews] = useState([]);
+  const [data, setData] = useState({ reviews: [], works: [] });
   const [selectedReview, setSelectedReview] = useState(null);
   const [isCreateFormOpen, setCreateFormOpen] = useState(false);
   const [isEditFormOpen, setEditFormOpen] = useState(false);
 
-  const fetchReviews = async () => {
+  const fetchReviewsAndWorks = async () => {
     try {
-      const url = "https://semesterprojekt2-deployment-with-azure.azurewebsites.net/reviews";
-      const response = await fetch(url);
-      const data = await response.json();
-      setReviews(data);
+      const [reviewsResponse, worksResponse] = await Promise.all([
+        fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/reviews"),
+        fetch("https://semesterprojekt2-deployment-with-azure.azurewebsites.net/works"),
+      ]);
+      const reviewsData = await reviewsResponse.json();
+      const worksData = await worksResponse.json();
+      setData({
+        reviews: Object.keys(reviewsData).map((key) => ({
+          id: key,
+          ...reviewsData[key],
+        })),
+        works: Object.keys(worksData).map((key) => ({
+          id: key,
+          ...worksData[key],
+        })),
+      });
     } catch (error) {
       console.error("An error occurred:", error);
     }
   };
 
   useEffect(() => {
-    fetchReviews();
+    fetchReviewsAndWorks();
   }, []);
+
+  const { reviews, works } = data;
 
   const handleEditReview = (review) => {
     setSelectedReview(review);
@@ -79,7 +93,7 @@ export default function ManageReviewPage() {
 
       if (response.ok) {
         console.log(selectedReview ? "Review updated:" : "New review created:");
-        fetchReviews();
+        fetchReviewsAndWorks();
         handleCancelEditReview(); // Clear selectedReview after saving
         if (!selectedReview) {
           handleCloseCreateForm(); // Close the create form after creating a new review
@@ -103,7 +117,7 @@ export default function ManageReviewPage() {
       if (response.ok) {
         console.log("Review deleted");
         // Refresh the works list after deletion
-        fetchReviews();
+        fetchReviewsAndWorks();
       } else {
         console.log("Error deleting work");
       }
@@ -117,20 +131,44 @@ export default function ManageReviewPage() {
         <button onClick={handleOpenCreateForm}>Opret anmeldelse</button>
         {/* Display the list of reviews */}
         <ul className="list-group">
-          {reviews.map((review) => (
-            <li key={review.review_id} className="list-group-item">
-              <p className="mb-1">
-                {review.name}: {review.review_text}
-              </p>
-              <p className="mb-1">{review.rating}</p>
-              <button className="btn btn-info button-margin-right" onClick={() => handleEditReview(review)}>
-                Rediger
-              </button>
-              <button className="btn btn-danger" onClick={() => handleDeleteReview(review)}>
-                Slet
-              </button>
-            </li>
-          ))}
+          {reviews.map((review) => {
+            const work = works.find((work) => work.work_id === review.work_id);
+
+            const stars = Array.from({ length: review.rating }, (_, index) => (
+              <span key={index} role="img" aria-label="star">
+                ⭐
+              </span>
+            ));
+
+            return (
+              <li key={review.review_id} className="list-group-item">
+                <p>{work ? work.title : "Loading..."}</p>
+
+                <p className="mb-1">{stars}</p>
+                <p className="mb-1">{review.review_text}</p>
+                <p className="mb-1">{review.date}</p>
+                <p className="mb-1">
+                  {new Date(review.createdAt)
+                    .toLocaleDateString("da-DK", {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    })
+                    .split(".")
+                    .join("/")}
+                </p>
+                <p className="mb-1">
+                  Af <strong>{review.name}</strong>
+                </p>
+                <button className="btn btn-info button-margin-right" onClick={() => handleEditReview(review)}>
+                  Rediger
+                </button>
+                <button className="btn btn-danger" onClick={() => handleDeleteReview(review)}>
+                  Slet
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
