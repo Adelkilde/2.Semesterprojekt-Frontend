@@ -15,7 +15,7 @@ import ManageNews from "./pages/ManageNewsPage";
 export default function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const location = useLocation();
-  const isHomePage = location.pathname === "/";
+  const isHomePage = location.pathname === "/2.Semesterprojekt-Frontend";
 
   useEffect(() => {
     if (location.pathname.includes("/admin")) {
@@ -39,7 +39,7 @@ export default function App() {
           {isAdmin && <Route path="/admin/manage-reviews" element={<ManageReviews />} />}
           {isAdmin && <Route path="/admin/manage-news" element={<ManageNews />} />}
 
-          {/* <Route path="*" element={<Navigate to="/" />} /> */}
+          <Route path="*" element={<Navigate to="/2.Semesterprojekt-Frontend" />} />
         </Routes>
       </main>
     </>
