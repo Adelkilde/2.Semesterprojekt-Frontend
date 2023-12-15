@@ -10,8 +10,6 @@ The platform is built using Vite and React, two powerful technologies that ensur
 
 In addition to providing information, Gyldmark also aims to foster a community of readers and fans. Users can engage with each other, share their thoughts on the author's works, and stay updated on her latest publications and events.
 
-To access the admin functions of the page you have to manually type "/admin" after the URL. This will allow you to create, delete and edit items in the database.
-
 ## 🖋 Table of Contents
 
 - [Getting Started](#getting-started)
